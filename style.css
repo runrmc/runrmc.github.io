@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  color: #222;
+  background-color: #fff;
+  line-height: 1.7;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+
+.nav-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+nav ul a:hover {
+  color: #555;
+}
+
+/* Sections */
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+/* Hero */
+#hero {
+  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+#hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Headings */
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* Projects */
+.project {
+  margin-bottom: 40px;
+}
+
+.project h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.project p {
+  color: #444;
+}
+
+/* Skills */
+#skills p {
+  color: #444;
+}
+
+/* Contact */
+#contact p {
+  margin-bottom: 10px;
+}
+
+#contact a {
+  color: #222;
+  text-decoration: underline;
+}
+
+#contact a:hover {
+  color: #555;
+}
