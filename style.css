@@ -11,6 +11,15 @@ body {
   line-height: 1.7;
 }
 
+/* Profile Photo */
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+}
+
 /* Navigation */
 nav {
   display: flex;
