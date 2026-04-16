@@ -11,15 +11,6 @@ body {
   line-height: 1.7;
 }
 
-/* Profile Photo */
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 25px;
-}
-
 /* Navigation */
 nav {
   display: flex;
@@ -75,6 +66,15 @@ section {
 #hero p {
   font-size: 1.2rem;
   color: #555;
+}
+
+/* Profile Photo */
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
 }
 
 /* Headings */
