@@ -7,11 +7,72 @@
   <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../style.css" />
   <style>
-    .project-hero {
-      padding-top: 80px;
-      padding-bottom: 40px;
+
+    /* ── Layout ── */
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
     }
-    .project-hero .back-link {
+
+    .content-col {
+      max-width: 800px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    /* ── Sticky Sidebar ── */
+    .sidebar {
+      width: 180px;
+      flex-shrink: 0;
+      margin-left: 48px;
+    }
+
+    .sidebar-inner {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-inner p {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-inner ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-left: 1px solid #eee;
+    }
+
+    .sidebar-inner ol li {
+      margin-bottom: 10px;
+      padding-left: 14px;
+    }
+
+    .sidebar-inner ol li a {
+      font-size: 0.82rem;
+      color: #999;
+      text-decoration: none;
+      line-height: 1.4;
+      display: block;
+      transition: color 0.15s ease;
+    }
+
+    .sidebar-inner ol li a:hover,
+    .sidebar-inner ol li a.active {
+      color: #222;
+    }
+
+    /* ── Back link ── */
+    .back-link {
       display: inline-block;
       font-size: 0.9rem;
       color: #555;
@@ -19,39 +80,60 @@
       margin-bottom: 30px;
       letter-spacing: 0.02em;
     }
-    .project-hero .back-link:hover {
-      color: #222;
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC (inline, top of page) ── */
+    .toc {
+      margin: 30px 0 0;
     }
-    .project-hero .back-link::before {
-      content: '← ';
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
     }
-    .project-hero h1 {
-      font-size: 2.2rem;
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
       margin-bottom: 10px;
     }
-    .project-hero .subtitle {
-      font-size: 1rem;
-      color: #777;
-      font-style: italic;
-      margin-bottom: 30px;
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
     }
+    .toc-inner ol li {
+      margin-bottom: 6px;
+    }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 0;
     }
     .tag {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #555;
       border: 1px solid #ddd;
       padding: 4px 12px;
       border-radius: 20px;
       font-family: 'Georgia', serif;
     }
+
+    /* ── Sections ── */
     .project-section {
-      padding-top: 50px;
-      padding-bottom: 10px;
+      padding: 60px 0 10px;
     }
     .project-section h2 {
       font-size: 1.4rem;
@@ -70,36 +152,59 @@
     .project-section ul li {
       margin-bottom: 10px;
     }
+
+    /* ── Stat blocks ── */
     .stat-row {
       display: flex;
-      gap: 40px;
+      gap: 32px;
       margin: 30px 0;
       flex-wrap: wrap;
     }
     .stat {
       flex: 1;
-      min-width: 140px;
+      min-width: 130px;
       border-left: 2px solid #222;
-      padding-left: 16px;
+      padding-left: 14px;
     }
     .stat .number {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #222;
       line-height: 1.2;
     }
     .stat .label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #777;
       margin-top: 4px;
     }
-    /* Video embed */
+
+    /* ── PDF embed ── */
+    .pdf-embed-container {
+      margin: 24px 0 8px;
+      border: 1px solid #eee;
+    }
+    .pdf-embed-container iframe {
+      width: 100%;
+      height: 600px;
+      display: block;
+      border: none;
+    }
+    .pdf-embed-label {
+      font-size: 0.85rem;
+      color: #777;
+      font-style: italic;
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+    .pdf-embed-label a { color: #444; }
+
+    /* ── Video embed ── */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      margin: 30px 0;
+      margin: 24px 0;
       border: 1px solid #eee;
     }
     .video-container iframe {
@@ -109,11 +214,12 @@
       width: 100%;
       height: 100%;
     }
-    /* Deliverables */
+
+    /* ── Deliverables ── */
     .deliverables {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       margin-top: 20px;
     }
     .deliverable-item {
@@ -143,11 +249,14 @@
       font-size: 1rem;
       color: #aaa;
     }
-    .divider {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 50px 0 0;
+
+    .page-end { padding-bottom: 100px; }
+
+    /* ── Hide sidebar on narrow screens ── */
+    @media (max-width: 1050px) {
+      .sidebar { display: none; }
     }
+
   </style>
 </head>
 <body>
@@ -163,105 +272,201 @@
     </ul>
   </nav>
 
-  <section class="project-hero" style="max-width: 800px; margin: 0 auto; padding: 80px 20px 20px;">
+  <!-- Hero + inline TOC -->
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
     <a href="../index.html#projects" class="back-link">Back to Projects</a>
-    <h1>Employee Turnover Prediction & Strategic Analysis</h1>
-    <p class="subtitle">SIADS 523: Communicating Data Science Results &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; December 2025</p>
-    <div class="project-tags">
-      <span class="tag">Logistic Regression</span>
-      <span class="tag">Classification</span>
-      <span class="tag">Python</span>
-      <span class="tag">People Analytics</span>
-      <span class="tag">Executive Communication</span>
-      <span class="tag">Data Visualization</span>
-    </div>
-  </section>
-
-  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
-    <h2>Overview</h2>
-    <p>
-      This project addresses a workforce planning challenge for Acme Aroma, a manufacturing company experiencing a sustained rise in employee attrition — from 6% in 2012 to a peak of 19% in 2021, representing a 3x increase over the decade. The 2021–2022 period alone produced 1,355 departures and ₹29.8 million in recruitment and onboarding costs, the first acquisition expenses the company had incurred in over a decade.
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Employee Turnover Prediction & Strategic Analysis</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 523: Communicating Data Science Results &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; December 2025
     </p>
-    <p>
-      The core objective was twofold: build a reliable predictive model to identify employees at risk of leaving, and translate those findings into a clear, actionable recommendation for a non-technical executive audience — in this case, the company's Vice President of Human Resources.
-    </p>
-
-    <div class="stat-row">
-      <div class="stat">
-        <div class="number">91%</div>
-        <div class="label">Model recall — employees at risk correctly identified</div>
-      </div>
-      <div class="stat">
-        <div class="number">88%</div>
-        <div class="label">Overall classification accuracy</div>
-      </div>
-      <div class="stat">
-        <div class="number">₹318M</div>
-        <div class="label">Projected annual savings from recommended initiative</div>
-      </div>
-      <div class="stat">
-        <div class="number">563</div>
-        <div class="label">Employees retained annually under recommendation</div>
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#executive-summary">Executive Summary</a></li>
+          <li><a href="#findings">Key Findings & Technical Report</a></li>
+          <li><a href="#presentation">Recorded Presentation</a></li>
+          <li><a href="#deliverables">Deliverables</a></li>
+        </ol>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
-    <h2>Approach</h2>
-    <p>
-      The analysis drew from Acme's internal HRIS (Pegasus), which contained 4,410 employee records spanning personal characteristics, professional history, and engagement survey results. The response variable was binary attrition — whether an employee left the company in the prior year.
-    </p>
-    <p>
-      A logistic regression model was selected for its dual utility: it can both predict which employees are at risk (predictive) and quantify how strongly each factor contributes to that risk (inferential). Exploratory data analysis identified the variables most correlated with attrition, and five were selected for the final model based on signal strength and coverage across different domains of employee experience.
-    </p>
-    <p>
-      A key data challenge was class imbalance — only 16% of records reflected employees who left. To prevent the model from defaulting to predicting everyone stays, the training data was balanced through oversampling. Model performance was evaluated using recall as the primary metric, given that missing a true departure (Type 2 error) is substantially more costly for the organization than a false alarm (Type 1 error). The F1 score was used to monitor the balance between the two.
-    </p>
-  </section>
+  <!-- Main page wrapper with sidebar -->
+  <div class="page-wrapper">
 
-  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
-    <h2>Key Findings</h2>
-    <p>
-      The final model included five predictors: Work-Life Balance, Percent Salary Hike, Job Satisfaction, Age, and Distance from Home. All five were statistically significant. Employee engagement factors dominated — the top three predictors were all within the company's direct control.
-    </p>
-    <ul>
-      <li><strong>Work-Life Balance</strong> was the strongest protective factor, with an odds ratio of 0.18 — meaning higher work-life balance was associated with an 82% reduction in turnover odds.</li>
-      <li><strong>Percent Salary Hike</strong> followed closely (OR: 0.20, 80% reduction), with <strong>Job Satisfaction</strong> third (OR: 0.40, 60% reduction).</li>
-      <li><strong>Distance from Home</strong> was the only factor that increased attrition risk (OR: 1.54, 54% increase).</li>
-    </ul>
-    <p>
-      Five potential HR initiatives were evaluated by running each through the model to estimate impact on attrition probability. Limiting business travel — which directly improves work-life balance — produced the largest reduction, lowering attrition probability from 49.6% to 35.4% and retaining an estimated 563 employees annually. At an assumed replacement cost of 75% of annual salary, this translates to ₹318 million in avoided costs per year, outperforming the next-best option (workplace flexibility at ₹265M) by roughly 20%.
-    </p>
-  </section>
+    <!-- Content column -->
+    <div class="content-col">
 
-  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
-    <h2>Presentation</h2>
-    <p>
-      The findings were delivered as a five-minute recorded presentation designed for a non-technical executive audience. The presentation follows the PAIRL communication framework (Problem, Approach, Insights, Recommendations, Limitations) and incorporates original data visualizations to support each stage of the argument.
-    </p>
-    <div class="video-container">
-      <iframe
-        src="https://www.youtube.com/embed/h-5auLhPc_c"
-        title="Employee Turnover Analysis & Strategic Recommendation | SIADS 523"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
+      <!-- 1. Project Overview -->
+      <section class="project-section" id="overview">
+        <h2>Project Overview</h2>
+        <p>
+          This project was completed as part of SIADS 523: Communicating Data Science Results at the University of Michigan. The course focuses on translating technical analysis into clear, audience-appropriate communication — written, visual, and oral — for stakeholders without a data science background.
+        </p>
+        <p>
+          The scenario centers on Acme Aroma, a manufacturing company experiencing a sustained rise in employee attrition — from 6% in 2012 to a peak of 19% in 2021, a 3x increase over the decade. The 2021–2022 period alone produced 1,355 departures and ₹29.8 million in recruitment and onboarding costs, the first acquisition expenses the company had incurred in over a decade. The project tasked me with building a predictive model to identify at-risk employees and delivering findings to the company's VP of Human Resources in a format she could act on.
+        </p>
+        <p>
+          Deliverables included a multi-slide technical report, a one-page executive summary, and a five-minute recorded presentation — all structured around the PAIRL communication framework (Problem, Approach, Insights, Recommendations, Limitations).
+        </p>
 
-  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 60px;">
-    <h2>Deliverables</h2>
-    <div class="deliverables">
-      <a class="deliverable-item" href="../assets/files/acme-aroma-presentation.pdf" target="_blank">
-        <div class="deliverable-info">
-          <h4>Presentation Slides</h4>
-          <p>Five-minute executive presentation — PDF download</p>
+        <div class="project-tags" style="margin: 24px 0 6px;">
+          <span class="tag">Logistic Regression</span>
+          <span class="tag">Classification Modeling</span>
+          <span class="tag">Python</span>
+          <span class="tag">Exploratory Data Analysis (EDA)</span>
+          <span class="tag">Model Evaluation (Recall, F1, Precision)</span>
+          <span class="tag">Workforce Planning</span>
+          <span class="tag">Executive Communication</span>
+          <span class="tag">Data Visualization</span>
         </div>
-        <span class="deliverable-arrow">↓</span>
-      </a>
+        <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+        <div class="stat-row">
+          <div class="stat">
+            <div class="number">91%</div>
+            <div class="label">Model recall — at-risk employees correctly identified</div>
+          </div>
+          <div class="stat">
+            <div class="number">88%</div>
+            <div class="label">Overall classification accuracy</div>
+          </div>
+          <div class="stat">
+            <div class="number">₹318M</div>
+            <div class="label">Projected annual savings from recommended initiative</div>
+          </div>
+          <div class="stat">
+            <div class="number">563</div>
+            <div class="label">Employees retained annually under recommendation</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Executive Summary -->
+      <section class="project-section" id="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>
+          The executive summary condenses the full analysis into a single page for a non-technical stakeholder audience. It covers all five components of PAIRL — leading with the business problem and financial stakes, summarizing the analytical approach, presenting key model insights and odds ratios in plain language, and closing with the strategic recommendation and its projected cost savings.
+        </p>
+        <div class="pdf-embed-container">
+          <iframe src="../assets/files/acme-aroma-executive-summary.pdf"></iframe>
+        </div>
+        <p class="pdf-embed-label">Not loading? <a href="../assets/files/acme-aroma-executive-summary.pdf" target="_blank">Open in a new tab.</a></p>
+      </section>
+
+      <!-- 3. Key Findings + Technical Report -->
+      <section class="project-section" id="findings">
+        <h2>Key Findings & Technical Report</h2>
+        <p>
+          The analysis drew from Acme's internal HRIS (Pegasus), containing 4,410 employee records across personal characteristics, professional history, and engagement survey results. A logistic regression model was selected for its dual utility — predicting which employees are at risk while also quantifying how strongly each factor drives that risk.
+        </p>
+        <p>
+          A critical data challenge was class imbalance: only 16% of records represented employees who left. The training data was balanced through oversampling to ensure the model learned meaningful patterns from both groups. Recall was prioritized as the primary evaluation metric, since missing a true departure is substantially more costly for the organization than a false alarm.
+        </p>
+        <p>
+          The final model included five statistically significant predictors. Employee engagement factors dominated — the top three were all within the company's direct control:
+        </p>
+        <ul>
+          <li><strong>Work-Life Balance</strong> was the strongest protective factor (OR: 0.18) — associated with an 82% reduction in turnover odds.</li>
+          <li><strong>Percent Salary Hike</strong> followed closely (OR: 0.20, 80% reduction), then <strong>Job Satisfaction</strong> (OR: 0.40, 60% reduction).</li>
+          <li><strong>Distance from Home</strong> was the only risk-increasing factor (OR: 1.54, 54% increase in departure likelihood).</li>
+        </ul>
+        <p>
+          Five HR initiatives were evaluated by simulating each through the model. Limiting business travel — which directly improves work-life balance — produced the largest attrition reduction, lowering departure probability from 49.6% to 35.4% and retaining an estimated 563 employees annually. At 75% of annual salary as replacement cost, this translates to ₹318 million in avoided costs per year, outperforming the next-best option by roughly 20%.
+        </p>
+        <p>
+          The full technical report below covers each stage of the analysis in depth, including exploratory data analysis, model performance, the root association analysis, and the complete initiative comparison.
+        </p>
+        <div class="pdf-embed-container">
+          <iframe src="../assets/files/acme-aroma-technical-report.pdf"></iframe>
+        </div>
+        <p class="pdf-embed-label">Not loading? <a href="../assets/files/acme-aroma-technical-report.pdf" target="_blank">Open in a new tab.</a></p>
+      </section>
+
+      <!-- 4. Presentation -->
+      <section class="project-section" id="presentation">
+        <h2>Recorded Presentation</h2>
+        <p>
+          The findings were delivered as a five-minute recorded presentation built specifically for a non-technical executive audience. Rather than walking through the technical report, the presentation uses original data visualizations, a clear narrative arc, and plain language to lead the viewer from the problem through to the recommendation. Slides were designed separately from the technical report to support the spoken delivery rather than replicate it.
+        </p>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/h-5auLhPc_c"
+            title="Employee Turnover Analysis & Strategic Recommendation | SIADS 523"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- 5. Deliverables -->
+      <section class="project-section page-end" id="deliverables">
+        <h2>Deliverables</h2>
+        <div class="deliverables">
+          <a class="deliverable-item" href="../assets/files/acme-aroma-executive-summary.pdf" target="_blank">
+            <div class="deliverable-info">
+              <h4>Executive Summary</h4>
+              <p>One-page PAIRL summary for stakeholder audiences — PDF download</p>
+            </div>
+            <span class="deliverable-arrow">↓</span>
+          </a>
+          <a class="deliverable-item" href="../assets/files/acme-aroma-technical-report.pdf" target="_blank">
+            <div class="deliverable-info">
+              <h4>Technical Report</h4>
+              <p>Full slidedoc technical report — PDF download</p>
+            </div>
+            <span class="deliverable-arrow">↓</span>
+          </a>
+          <a class="deliverable-item" href="../assets/files/acme-aroma-presentation.pdf" target="_blank">
+            <div class="deliverable-info">
+              <h4>Presentation Slides</h4>
+              <p>Five-minute executive presentation — PDF download</p>
+            </div>
+            <span class="deliverable-arrow">↓</span>
+          </a>
+        </div>
+      </section>
+
+    </div><!-- end content-col -->
+
+    <!-- Sticky sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#executive-summary">Executive Summary</a></li>
+          <li><a href="#findings">Key Findings & Technical Report</a></li>
+          <li><a href="#presentation">Recorded Presentation</a></li>
+          <li><a href="#deliverables">Deliverables</a></li>
+        </ol>
+      </div>
     </div>
-  </section>
+
+  </div><!-- end page-wrapper -->
+
+  <script>
+    const sections = document.querySelectorAll('.project-section');
+    const sidebarLinks = document.querySelectorAll('.sidebar-inner a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 
 </body>
 </html>
