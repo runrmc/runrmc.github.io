@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NBA Shot Analysis | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC ── */
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Sections ── */
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    /* ── Stat blocks ── */
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ── Screenshot placeholder ── */
+    .screenshot-placeholder {
+      background: #f7f7f7;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      margin: 24px 0;
+      text-align: center;
+      gap: 10px;
+    }
+    .screenshot-placeholder .ph-icon {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+    .screenshot-placeholder .ph-label {
+      font-size: 0.85rem;
+      color: #aaa;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Screenshot (real image, once added) ── */
+    .screenshot {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: block;
+      margin: 24px 0;
+    }
+
+    /* ── Viz section ── */
+    .viz-block {
+      margin: 40px 0;
+    }
+    .viz-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .viz-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+
+    /* ── Insight callout ── */
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">NBA Shot Analysis: The Evolution of Modern Basketball</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 522: Visual Exploration of Data &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#data">The Data</a></li>
+          <li><a href="#dashboard">The Dashboard</a></li>
+          <li><a href="#insights">Key Insights</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Project Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project was completed as part of SIADS 522: Visual Exploration of Data at the University of Michigan. The course focuses on the principles and practice of visual data analysis — choosing the right chart types, encoding data effectively, and building interactive tools that let analysts explore data rather than just report it.
+      </p>
+      <p>
+        The central question: how has NBA shot selection changed over the past 14 seasons, and which shooting zones are actually efficient? To answer this, I built an interactive Plotly dashboard that analyzes shot-by-shot data for the top 25 NBA scorers by points per game from 2011 to 2025. The dashboard uses four complementary chart types — each chosen for a specific analytical purpose — and lets users filter dynamically by player and season across all views simultaneously.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">pandas</span>
+        <span class="tag">ipywidgets</span>
+        <span class="tag">Interactive Dashboards</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Exploratory Data Analysis</span>
+        <span class="tag">Spatial Analysis</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">828K</div>
+          <div class="label">Shot attempts analyzed</div>
+        </div>
+        <div class="stat">
+          <div class="number">14</div>
+          <div class="label">NBA seasons (2011–2025)</div>
+        </div>
+        <div class="stat">
+          <div class="number">25</div>
+          <div class="label">Top scorers by points per game</div>
+        </div>
+        <div class="stat">
+          <div class="number">4</div>
+          <div class="label">Linked interactive visualizations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. The Data -->
+    <section class="project-section" id="data">
+      <h2>The Data</h2>
+      <p>
+        The dataset contains shot-by-shot records for the top 25 NBA players by points per game across each season from 2011 to 2025 — 828,368 total attempts. Each record includes the shot's court coordinates, distance from the basket, shot type (two-pointer or three-pointer), outcome (made or missed), and the points scored. Players are filtered by PPG ranking per season, meaning the dataset captures the league's most prolific offensive players at their peak rather than career-wide data.
+      </p>
+      <p>
+        Prior to visualization, the data was cleaned to remove outlier attempts (shots beyond 35 feet from the basket, or outside court boundaries), standardize column names, and calculate a points-scored field based on shot type and outcome. This preprocessing made it possible to compute efficiency metrics — points per attempt and field goal percentage — across any player, season, or distance range selected in the dashboard.
+      </p>
+    </section>
+
+    <!-- 3. The Dashboard -->
+    <section class="project-section" id="dashboard">
+      <h2>The Dashboard</h2>
+      <p>
+        The dashboard pairs each visualization type with a specific analytical purpose. A player dropdown and season slider filter all four charts simultaneously, so any change in selection propagates across the full view — allowing direct comparison of, for example, how a specific player's shot chart and efficiency profile compare league-wide across different seasons.
+      </p>
+
+      <!-- Viz 1 -->
+      <div class="viz-block">
+        <h3>1. Scatter Plot — Shot Location Analysis</h3>
+        <p>
+          The scatter plot maps every shot attempt onto a half-court coordinate plane, color-coded by outcome (green for makes, red for misses). This serves as the dashboard's spatial foundation — showing where shots are taken and immediately surfacing hotspots, dead zones, and player tendencies. Scatter plots are the right choice here because both axes (x and y court coordinates) carry meaningful spatial information, and encoding shot outcome as color adds a third dimension without cluttering the view.
+        </p>
+        <!-- Replace src with your actual screenshot path when ready -->
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/nba-scatter.png" class="screenshot" alt="Shot location scatter plot" /&gt;</code></span>
+        </div>
+      </div>
+
+      <!-- Viz 2 -->
+      <div class="viz-block">
+        <h3>2. Histogram — Shot Distance Efficiency</h3>
+        <p>
+          The histogram bins shot attempts into five distance ranges (0–3 ft, 3–10 ft, 10–16 ft, 16–24 ft, and 24+ ft) and calculates points per attempt for each zone. A red-yellow-green color scale makes the efficiency gradient immediately readable. This transforms raw spatial data into a quantitative efficiency profile — revealing not just where players shoot, but which zones actually pay off.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/nba-histogram.png" class="screenshot" alt="Shot distance efficiency histogram" /&gt;</code></span>
+        </div>
+      </div>
+
+      <!-- Viz 3 -->
+      <div class="viz-block">
+        <h3>3. Line Chart — Evolution of Shot Selection Over Time</h3>
+        <p>
+          The line chart plots the percentage of two-point vs. three-point attempts across each season, with both series on the same axes for direct comparison. Line charts are optimal for this because the data is time-ordered and the story is about trend — not snapshot — making continuous lines more intuitive than bars. Hovering any point shows the exact split for that season, and filtering to a single player reveals how individual shot selection evolved over a career.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/nba-line.png" class="screenshot" alt="Shot selection evolution line chart" /&gt;</code></span>
+        </div>
+      </div>
+
+      <!-- Viz 4 -->
+      <div class="viz-block">
+        <h3>4. Stacked Bar Chart — Scoring Distribution by Season</h3>
+        <p>
+          The stacked bar chart displays cumulative points from two-pointers and three-pointers for each season, with each bar divided by shot type. This view shifts the lens from shot attempts to actual scoring output — showing not just how shot selection changed, but how that shift affected total points generated. Stacked bars are well-suited for proportional composition across discrete categories, making the growing share of three-point scoring easy to read at a glance.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/nba-stacked-bar.png" class="screenshot" alt="Scoring distribution stacked bar chart" /&gt;</code></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Key Insights -->
+    <section class="project-section page-end" id="insights">
+      <h2>Key Insights</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>The mid-range shot is quantifiably inefficient.</strong>
+          Shots from 10–16 feet consistently yield the lowest points per attempt across players and seasons — below both rim attempts and three-pointers. The histogram makes this pattern visible and measurable, not just anecdotal.
+        </li>
+        <li>
+          <strong>The three-point revolution is real and ongoing.</strong>
+          The line chart shows a clear, sustained shift across all 14 seasons: three-point attempts as a share of total shots have risen steadily, with the most dramatic increases occurring in the mid-2010s. Even the most traditional scorers in the dataset show the trend.
+        </li>
+        <li>
+          <strong>Player tendencies are strikingly distinct spatially.</strong>
+          Filtering the scatter plot to individual players reveals markedly different shot profiles — some clustering near the rim with minimal mid-range activity, others with dense three-point zones and nearly empty paint areas. These spatial signatures map directly to the efficiency data in the histogram.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
