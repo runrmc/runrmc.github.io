@@ -21,9 +21,7 @@
     .back-link::before { content: '← '; }
 
     /* ── TOC ── */
-    .toc {
-      margin: 30px 0 0;
-    }
+    .toc { margin: 30px 0 0; }
     .toc-inner {
       border: 1px solid #eee;
       padding: 20px 24px;
@@ -39,9 +37,7 @@
       padding-left: 18px;
       margin: 0;
     }
-    .toc-inner ol li {
-      margin-bottom: 6px;
-    }
+    .toc-inner ol li { margin-bottom: 6px; }
     .toc-inner ol li a {
       font-size: 0.92rem;
       color: #555;
@@ -57,7 +53,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 0;
     }
     .tag {
       font-size: 0.78rem;
@@ -69,9 +64,7 @@
     }
 
     /* ── Sections ── */
-    .project-section {
-      padding: 60px 0 10px;
-    }
+    .project-section { padding: 60px 0 10px; }
     .project-section h2 {
       font-size: 1.4rem;
       margin-bottom: 20px;
@@ -86,9 +79,7 @@
       padding-left: 20px;
       color: #444;
     }
-    .project-section ul li {
-      margin-bottom: 10px;
-    }
+    .project-section ul li { margin-bottom: 10px; }
 
     /* ── Stat blocks ── */
     .stat-row {
@@ -115,26 +106,100 @@
       margin-top: 4px;
     }
 
-    /* ── Drive embed ── */
-    .drive-embed-container {
-      margin: 24px 0 8px;
+    /* ── Document preview card ── */
+    .doc-card {
       border: 1px solid #eee;
-      background: #fafafa;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 24px 0;
     }
-    .drive-embed-container iframe {
-      width: 100%;
-      height: 640px;
-      display: block;
-      border: none;
+    .doc-card-preview {
+      background: #f7f7f7;
+      border-bottom: 1px solid #eee;
+      padding: 32px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .embed-label {
-      font-size: 0.85rem;
+    .doc-card-thumbnail {
+      width: 200px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+    .doc-card-thumbnail .thumb-title {
+      font-size: 9px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+      font-family: 'Georgia', serif;
+    }
+    .thumb-line {
+      height: 3px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      margin-bottom: 5px;
+    }
+    .thumb-block {
+      background: #f0f0f0;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+    .thumb-cols {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .thumb-cols .thumb-col {
+      flex: 1;
+      background: #f0f0f0;
+      border-radius: 2px;
+    }
+    .doc-card-footer {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .doc-card-meta h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: #222;
+    }
+    .doc-card-meta p {
+      font-size: 0.83rem;
       color: #777;
-      font-style: italic;
-      margin-top: 8px;
-      margin-bottom: 0;
+      margin: 0;
     }
-    .embed-label a { color: #444; }
+    .doc-card-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .doc-btn {
+      font-size: 0.83rem;
+      padding: 8px 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      color: #222;
+      text-decoration: none;
+      background: #fff;
+      font-family: 'Georgia', serif;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .doc-btn:hover {
+      background: #f7f7f7;
+      border-color: #bbb;
+    }
+    .doc-btn.secondary {
+      background: #f7f7f7;
+    }
+    .doc-btn.secondary:hover {
+      background: #efefef;
+    }
 
     /* ── Video embed ── */
     .video-container {
@@ -277,10 +342,31 @@
       <p>
         The executive summary condenses the full analysis into a single page for a non-technical stakeholder audience. It covers all five components of PAIRL — leading with the business problem and financial stakes, summarizing the analytical approach, presenting key model insights and odds ratios in plain language, and closing with the strategic recommendation and its projected cost savings.
       </p>
-      <div class="drive-embed-container">
-        <iframe src="https://drive.google.com/file/d/19IaxsNucaqBfI2fudaxh_BXWXjMof5Xw/preview" allow="autoplay"></iframe>
+      <div class="doc-card">
+        <div class="doc-card-preview">
+          <div class="doc-card-thumbnail">
+            <div class="thumb-title">Executive Summary</div>
+            <div class="thumb-line" style="width: 90%;"></div>
+            <div class="thumb-line" style="width: 70%;"></div>
+            <div class="thumb-cols" style="margin-top: 8px;">
+              <div class="thumb-col" style="height: 50px;"></div>
+              <div class="thumb-col" style="height: 50px;"></div>
+            </div>
+            <div class="thumb-line" style="width: 85%;"></div>
+            <div class="thumb-line" style="width: 60%;"></div>
+          </div>
+        </div>
+        <div class="doc-card-footer">
+          <div class="doc-card-meta">
+            <h4>Executive Summary</h4>
+            <p>1 page &nbsp;·&nbsp; PAIRL framework &nbsp;·&nbsp; Non-technical audience</p>
+          </div>
+          <div class="doc-card-actions">
+            <a class="doc-btn" href="https://drive.google.com/file/d/19IaxsNucaqBfI2fudaxh_BXWXjMof5Xw/view?usp=sharing" target="_blank">View ↗</a>
+            <a class="doc-btn secondary" href="../assets/files/acme-aroma-executive-summary.pdf" download>Download ↓</a>
+          </div>
+        </div>
       </div>
-      <p class="embed-label">Not loading? <a href="https://drive.google.com/file/d/19IaxsNucaqBfI2fudaxh_BXWXjMof5Xw/view?usp=sharing" target="_blank">Open in Google Drive.</a></p>
     </section>
 
     <!-- 3. Key Findings + Technical Report -->
@@ -306,10 +392,28 @@
       <p>
         The full technical report below covers each stage of the analysis in depth, including exploratory data analysis, model performance, the root association analysis, and the complete initiative comparison.
       </p>
-      <div class="drive-embed-container">
-        <iframe src="https://drive.google.com/file/d/1O2AJ8WqRWuAWVQWKPf9rk-ZRlqM9siPb/preview" allow="autoplay"></iframe>
+      <div class="doc-card">
+        <div class="doc-card-preview">
+          <div class="doc-card-thumbnail">
+            <div class="thumb-title">Technical Report</div>
+            <div class="thumb-line" style="width: 85%;"></div>
+            <div class="thumb-line" style="width: 65%;"></div>
+            <div class="thumb-block" style="height: 44px; margin-top: 8px;"></div>
+            <div class="thumb-line" style="width: 90%; margin-top: 8px;"></div>
+            <div class="thumb-line" style="width: 55%;"></div>
+          </div>
+        </div>
+        <div class="doc-card-footer">
+          <div class="doc-card-meta">
+            <h4>Technical Report</h4>
+            <p>9 slides &nbsp;·&nbsp; Full PAIRL analysis &nbsp;·&nbsp; Executive audience</p>
+          </div>
+          <div class="doc-card-actions">
+            <a class="doc-btn" href="https://drive.google.com/file/d/1O2AJ8WqRWuAWVQWKPf9rk-ZRlqM9siPb/view?usp=sharing" target="_blank">View ↗</a>
+            <a class="doc-btn secondary" href="../assets/files/acme-aroma-technical-report.pdf" download>Download ↓</a>
+          </div>
+        </div>
       </div>
-      <p class="embed-label">Not loading? <a href="https://drive.google.com/file/d/1O2AJ8WqRWuAWVQWKPf9rk-ZRlqM9siPb/view?usp=sharing" target="_blank">Open in Google Drive.</a></p>
     </section>
 
     <!-- 4. Presentation -->
