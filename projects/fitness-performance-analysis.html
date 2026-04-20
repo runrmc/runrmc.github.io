@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Performance Analysis | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC ── */
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Sections ── */
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    /* ── Stat blocks ── */
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ── Screenshot placeholder ── */
+    .screenshot-placeholder {
+      background: #f7f7f7;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      margin: 24px 0;
+      text-align: center;
+      gap: 10px;
+    }
+    .screenshot-placeholder .ph-icon {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+    .screenshot-placeholder .ph-label {
+      font-size: 0.85rem;
+      color: #aaa;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Screenshot (real image, once added) ── */
+    .screenshot {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: block;
+      margin: 24px 0;
+    }
+
+    /* ── Viz blocks ── */
+    .viz-block {
+      margin: 40px 0;
+    }
+    .viz-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .viz-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+    .viz-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    /* ── Insight callout ── */
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Fitness Performance Analysis: What GPS Data Reveals About Exercise</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 522: Visual Exploration of Data &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; November 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#data">The Data</a></li>
+          <li><a href="#visualizations">The Visualizations</a></li>
+          <li><a href="#findings">Key Findings</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Project Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project was completed as part of SIADS 522: Visual Exploration of Data at the University of Michigan. The assignment was a real-world client engagement: a university faculty member who had begun tracking their exercise with GPS-enabled wearable devices provided a personal data export and asked for a visual analysis of what the data revealed about their performance and habits.
+      </p>
+      <p>
+        The deliverable was a computational notebook — structured as a narrative report — that used visualization to surface meaningful patterns in the data. The analysis followed the principles of Rule et al.'s ten rules for computational narratives, with each visualization building directly on the findings of the last and addressing limitations the prior chart couldn't resolve. The result is a four-part visual story that moves from individual session patterns to aggregate statistics to geographic context.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">matplotlib</span>
+        <span class="tag">Folium</span>
+        <span class="tag">pandas</span>
+        <span class="tag">ipywidgets</span>
+        <span class="tag">Geospatial Visualization</span>
+        <span class="tag">Interactive Dashboards</span>
+        <span class="tag">Exploratory Data Analysis</span>
+        <span class="tag">Computational Narrative</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">64</div>
+          <div class="label">Exercise sessions analyzed</div>
+        </div>
+        <div class="stat">
+          <div class="number">40K+</div>
+          <div class="label">GPS observations across all sessions</div>
+        </div>
+        <div class="stat">
+          <div class="number">4</div>
+          <div class="label">Complementary visualizations</div>
+        </div>
+        <div class="stat">
+          <div class="number">3+</div>
+          <div class="label">Visualization techniques demonstrated</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. The Data -->
+    <section class="project-section" id="data">
+      <h2>The Data</h2>
+      <p>
+        The dataset is a personal GPS fitness export from a wearable device, containing second-by-second sensor readings across 64 exercise sessions. Each observation includes timestamp, geographic coordinates, distance, speed, heart rate, cadence, altitude, and a set of running-specific biomechanics metrics (vertical oscillation, ground contact time, leg spring stiffness, and others) captured by an advanced running sensor.
+      </p>
+      <p>
+        Before visualization, the raw data required several preprocessing steps: converting timestamps to datetime objects, translating GPS coordinates from semicircles to degrees, converting distances from meters to kilometers, and computing derived metrics including pace (minutes per kilometer), elapsed time within each session, and elevation gain/loss. Sessions were also classified as running or non-running based on the presence of running-specific sensor data — a distinction that shaped which visualizations applied to which subset of the data.
+      </p>
+      <p>
+        The dataset presented an interesting structural challenge: duplicate columns with different completeness levels (e.g. two cadence fields, two speed fields). A correlation analysis confirmed these were measuring the same underlying metric, and the more complete version of each was selected for analysis.
+      </p>
+    </section>
+
+    <!-- 3. Visualizations -->
+    <section class="project-section" id="visualizations">
+      <h2>The Visualizations</h2>
+      <p>
+        Each visualization was chosen to answer a specific question raised by the previous one. The analysis builds progressively — from understanding what happens within a single run, to comparing patterns across all runs, to understanding why those patterns vary.
+      </p>
+
+      <!-- Viz 1 -->
+      <div class="viz-block">
+        <span class="viz-label">Scatter Plot &nbsp;·&nbsp; Basic Technique</span>
+        <h3>1. Heart Rate Progression Throughout a Run</h3>
+        <p>
+          The first visualization plots heart rate against elapsed time for an individual running session, with each point colored by pace. This surfaces two questions simultaneously: does heart rate increase over time due to fatigue (cardiovascular drift), and can pace changes explain sudden spikes in heart rate? A scatter plot is the right choice here because both axes carry meaningful continuous values, and encoding pace as a color gradient adds a third variable without cluttering the view. An interactive dropdown lets the client select any running session and compare patterns across workouts.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-scatter.png" class="screenshot" alt="Heart rate progression scatter plot" /&gt;</code></span>
+        </div>
+      </div>
+
+      <!-- Viz 2 -->
+      <div class="viz-block">
+        <span class="viz-label">Multi-Axis Line Chart &nbsp;·&nbsp; Basic Technique</span>
+        <h3>2. Multi-Variable Performance Analysis Over Time</h3>
+        <p>
+          The scatter plot raised a follow-up question: if pace alone doesn't fully explain heart rate variation, what else does? This visualization overlays heart rate, pace, and elevation on a shared timeline using three independent y-axes, with smoothed trend lines for each. An annotated correlation box quantifies the relationship between each variable pair for the selected session. Line charts are optimal for this because the data is time-ordered and the story is about how these metrics move together — or don't. The same session dropdown from Visualization 1 carries forward, keeping the client's focus on the same run across both views.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-multiaxis.png" class="screenshot" alt="Multi-axis time series line chart" /&gt;</code></span>
+        </div>
+      </div>
+
+      <!-- Viz 3 -->
+      <div class="viz-block">
+        <span class="viz-label">Box Plot &nbsp;·&nbsp; Basic Technique</span>
+        <h3>3. Correlation Distribution Across All Running Sessions</h3>
+        <p>
+          Visualizations 1 and 2 showed that variable relationships differed session to session. This raised a natural question: how consistent are these relationships across all runs? A box plot of correlation coefficients — one box per variable pair — shows both the central tendency and spread of each relationship across all running sessions. Box plots are well-suited here because the goal is to compare distributions across categories, and the median, quartiles, and outliers all carry meaningful information. Mean values are overlaid as diamond markers to distinguish average from median where the distribution is skewed.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-boxplot.png" class="screenshot" alt="Correlation distribution box plot" /&gt;</code></span>
+        </div>
+      </div>
+
+      <!-- Viz 4 -->
+      <div class="viz-block">
+        <span class="viz-label">Interactive Geospatial Map &nbsp;·&nbsp; Advanced Technique</span>
+        <h3>4. GPS Route Map with Color-Coded Performance Metrics</h3>
+        <p>
+          The box plot revealed that correlations between heart rate, pace, and elevation were surprisingly weak on average — but with wide variability. The geographic map was built to explain why. Using Folium, all 64 sessions are plotted as GPS coordinate sequences, with each point colored by the user's choice of metric: heart rate, pace, or elevation. Start and end markers anchor each route, hover tooltips surface per-point stats, and a color gradient legend provides a reference scale. This is the most technically complex visualization in the analysis — combining geospatial rendering, interactive controls, and performance metric encoding in a single view — and it directly answers the question the prior three charts couldn't: the terrain is what's driving the variability.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-map.png" class="screenshot" alt="Interactive GPS route map" /&gt;</code></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Key Findings -->
+    <section class="project-section page-end" id="findings">
+      <h2>Key Findings</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Cardiovascular drift is real and measurable.</strong>
+          Heart rate increases throughout most running sessions even when pace stays relatively constant — a pattern visible in the scatter plot across nearly every session. This indicates cumulative fatigue, not just momentary effort, is shaping cardiovascular demand.
+        </li>
+        <li>
+          <strong>Correlations between metrics are highly session-dependent.</strong>
+          The box plot showed that heart rate, pace, and elevation correlations cluster near zero on average — a counterintuitive finding. Some sessions showed strong relationships (±0.8), while others showed near-zero correlations for the same variable pair. Aggregate statistics obscure what individual sessions make obvious.
+        </li>
+        <li>
+          <strong>Terrain explains the variability.</strong>
+          The geographic map resolved the puzzle: most sessions in this dataset occur on relatively flat routes. Only a handful of sessions include significant elevation change — and those are exactly the sessions that produce the strong correlations and outliers seen in the box plot. The weak average correlations aren't a data quality issue; they reflect the actual terrain distribution of the workouts.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
