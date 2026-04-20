@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acme Aroma | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .project-hero {
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+    .project-hero .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .project-hero .back-link:hover {
+      color: #222;
+    }
+    .project-hero .back-link::before {
+      content: '← ';
+    }
+    .project-hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .project-hero .subtitle {
+      font-size: 1rem;
+      color: #777;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+    .tag {
+      font-size: 0.8rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+    .project-section {
+      padding-top: 50px;
+      padding-bottom: 10px;
+    }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li {
+      margin-bottom: 10px;
+    }
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      border-left: 2px solid #222;
+      padding-left: 16px;
+    }
+    .stat .number {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 4px;
+    }
+    /* Video embed */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 30px 0;
+      border: 1px solid #eee;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    /* Deliverables */
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .deliverable-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid #eee;
+      text-decoration: none;
+      color: #222;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .deliverable-item:hover {
+      border-color: #aaa;
+      background-color: #fafafa;
+    }
+    .deliverable-item .deliverable-info h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .deliverable-item .deliverable-info p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+    }
+    .deliverable-item .deliverable-arrow {
+      font-size: 1rem;
+      color: #aaa;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 50px 0 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <section class="project-hero" style="max-width: 800px; margin: 0 auto; padding: 80px 20px 20px;">
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1>Employee Turnover Prediction & Strategic Analysis</h1>
+    <p class="subtitle">SIADS 523: Communicating Data Science Results &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; December 2025</p>
+    <div class="project-tags">
+      <span class="tag">Logistic Regression</span>
+      <span class="tag">Classification</span>
+      <span class="tag">Python</span>
+      <span class="tag">People Analytics</span>
+      <span class="tag">Executive Communication</span>
+      <span class="tag">Data Visualization</span>
+    </div>
+  </section>
+
+  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
+    <h2>Overview</h2>
+    <p>
+      This project addresses a workforce planning challenge for Acme Aroma, a manufacturing company experiencing a sustained rise in employee attrition — from 6% in 2012 to a peak of 19% in 2021, representing a 3x increase over the decade. The 2021–2022 period alone produced 1,355 departures and ₹29.8 million in recruitment and onboarding costs, the first acquisition expenses the company had incurred in over a decade.
+    </p>
+    <p>
+      The core objective was twofold: build a reliable predictive model to identify employees at risk of leaving, and translate those findings into a clear, actionable recommendation for a non-technical executive audience — in this case, the company's Vice President of Human Resources.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="number">91%</div>
+        <div class="label">Model recall — employees at risk correctly identified</div>
+      </div>
+      <div class="stat">
+        <div class="number">88%</div>
+        <div class="label">Overall classification accuracy</div>
+      </div>
+      <div class="stat">
+        <div class="number">₹318M</div>
+        <div class="label">Projected annual savings from recommended initiative</div>
+      </div>
+      <div class="stat">
+        <div class="number">563</div>
+        <div class="label">Employees retained annually under recommendation</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
+    <h2>Approach</h2>
+    <p>
+      The analysis drew from Acme's internal HRIS (Pegasus), which contained 4,410 employee records spanning personal characteristics, professional history, and engagement survey results. The response variable was binary attrition — whether an employee left the company in the prior year.
+    </p>
+    <p>
+      A logistic regression model was selected for its dual utility: it can both predict which employees are at risk (predictive) and quantify how strongly each factor contributes to that risk (inferential). Exploratory data analysis identified the variables most correlated with attrition, and five were selected for the final model based on signal strength and coverage across different domains of employee experience.
+    </p>
+    <p>
+      A key data challenge was class imbalance — only 16% of records reflected employees who left. To prevent the model from defaulting to predicting everyone stays, the training data was balanced through oversampling. Model performance was evaluated using recall as the primary metric, given that missing a true departure (Type 2 error) is substantially more costly for the organization than a false alarm (Type 1 error). The F1 score was used to monitor the balance between the two.
+    </p>
+  </section>
+
+  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
+    <h2>Key Findings</h2>
+    <p>
+      The final model included five predictors: Work-Life Balance, Percent Salary Hike, Job Satisfaction, Age, and Distance from Home. All five were statistically significant. Employee engagement factors dominated — the top three predictors were all within the company's direct control.
+    </p>
+    <ul>
+      <li><strong>Work-Life Balance</strong> was the strongest protective factor, with an odds ratio of 0.18 — meaning higher work-life balance was associated with an 82% reduction in turnover odds.</li>
+      <li><strong>Percent Salary Hike</strong> followed closely (OR: 0.20, 80% reduction), with <strong>Job Satisfaction</strong> third (OR: 0.40, 60% reduction).</li>
+      <li><strong>Distance from Home</strong> was the only factor that increased attrition risk (OR: 1.54, 54% increase).</li>
+    </ul>
+    <p>
+      Five potential HR initiatives were evaluated by running each through the model to estimate impact on attrition probability. Limiting business travel — which directly improves work-life balance — produced the largest reduction, lowering attrition probability from 49.6% to 35.4% and retaining an estimated 563 employees annually. At an assumed replacement cost of 75% of annual salary, this translates to ₹318 million in avoided costs per year, outperforming the next-best option (workplace flexibility at ₹265M) by roughly 20%.
+    </p>
+  </section>
+
+  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 10px;">
+    <h2>Presentation</h2>
+    <p>
+      The findings were delivered as a five-minute recorded presentation designed for a non-technical executive audience. The presentation follows the PAIRL communication framework (Problem, Approach, Insights, Recommendations, Limitations) and incorporates original data visualizations to support each stage of the argument.
+    </p>
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/h-5auLhPc_c"
+        title="Employee Turnover Analysis & Strategic Recommendation | SIADS 523"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section class="project-section" style="max-width: 800px; margin: 0 auto; padding: 40px 20px 60px;">
+    <h2>Deliverables</h2>
+    <div class="deliverables">
+      <a class="deliverable-item" href="../assets/files/acme-aroma-presentation.pdf" target="_blank">
+        <div class="deliverable-info">
+          <h4>Presentation Slides</h4>
+          <p>Five-minute executive presentation — PDF download</p>
+        </div>
+        <span class="deliverable-arrow">↓</span>
+      </a>
+    </div>
+  </section>
+
+</body>
+</html>
