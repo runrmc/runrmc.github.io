@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Regression & Classification Fundamentals | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .method-block {
+      margin: 36px 0;
+    }
+    .method-block h3 {
+      font-size: 1.05rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .method-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+    .method-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Regression & Classification Fundamentals</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 542: Supervised Learning &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; December 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#regression">Regression: Polynomial Models & Regularization</a></li>
+          <li><a href="#classification">Classification: KNN & SVC</a></li>
+          <li><a href="#insights">Key Insights</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project spans two assignments from SIADS 542: Supervised Learning at the University of Michigan, covering the foundational methods of both regression and classification. Rather than treating them separately, the assignments are structured around a shared theme: understanding how model complexity relates to generalization — where underfitting and overfitting live, and how to navigate between them.
+      </p>
+      <p>
+        The regression work uses a synthetic noisy cubic dataset to explore polynomial feature expansion, bias-variance tradeoff, and Lasso regularization. The classification work applies k-Nearest Neighbors and Support Vector Classifiers to the Breast Cancer Wisconsin dataset, exploring hyperparameter tuning, weighted distance, and the effect of the RBF kernel's gamma parameter on train vs. test accuracy.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Polynomial Regression</span>
+        <span class="tag">Lasso Regularization</span>
+        <span class="tag">KNN</span>
+        <span class="tag">Support Vector Classifier</span>
+        <span class="tag">Hyperparameter Tuning</span>
+        <span class="tag">Bias-Variance Tradeoff</span>
+        <span class="tag">One-Hot Encoding</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">4</div>
+          <div class="label">Polynomial degrees evaluated (1, 3, 7, 11)</div>
+        </div>
+        <div class="stat">
+          <div class="number">569</div>
+          <div class="label">Patient records in classification dataset</div>
+        </div>
+        <div class="stat">
+          <div class="number">30</div>
+          <div class="label">Features in the Breast Cancer Wisconsin dataset</div>
+        </div>
+        <div class="stat">
+          <div class="number">6</div>
+          <div class="label">Gamma values swept in SVC validation curve</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Regression -->
+    <section class="project-section" id="regression">
+      <h2>Regression: Polynomial Models & Regularization</h2>
+      <p>
+        The regression portion of the project works with a synthetic dataset where the true underlying function is a known cubic polynomial — but the observed data includes Gaussian noise. This setup makes it possible to evaluate models not just against the noisy test set, but against a "gold standard" noiseless version of the true function, revealing how well each model recovers the actual signal.
+      </p>
+
+      <div class="method-block">
+        <span class="method-label">Polynomial Feature Expansion</span>
+        <h3>Fitting Polynomials of Degrees 1, 3, 7, and 11</h3>
+        <p>
+          Using scikit-learn's <code>PolynomialFeatures</code> and <code>LinearRegression</code>, polynomial models of degrees 1, 3, 7, and 11 were fit to the training data and evaluated by R² on both training and test sets. Degree 1 underfit the data badly — a straight line can't capture a cubic curve. Degree 11 memorized the training data nearly perfectly but generalized poorly to the test set, producing wild oscillations in regions between training points. Degree 3 achieved the best test R², aligning with the true underlying cubic structure.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Lasso Regularization</span>
+        <h3>Constraining Model Complexity with Sparse Coefficients</h3>
+        <p>
+          The same polynomial degrees were re-fit using Lasso regression (α=0.01), which adds an L1 penalty that drives less-useful coefficients to zero. Compared to unregularized linear regression, Lasso produced smoother fits at high polynomial degrees — damping the oscillations seen at degree 11 by effectively ignoring coefficients that weren't supported by the data. Evaluated against the gold standard noiseless test set, degree 3 again performed best, confirming that the regularization was helping the model recover the true function rather than fitting noise.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">KNN Regression</span>
+        <h3>Non-Parametric Baseline</h3>
+        <p>
+          A KNN regressor with default hyperparameters was fit as a non-parametric baseline. Its R² on the test set provided a useful reference point: it performed reasonably but was outperformed by the correctly-specified polynomial models, illustrating that when the true functional form is recoverable, parametric models with the right structure have an advantage over flexible non-parametric alternatives.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. Classification -->
+    <section class="project-section" id="classification">
+      <h2>Classification: KNN & SVC</h2>
+      <p>
+        The classification portion applies supervised learning to the Breast Cancer Wisconsin dataset — a real medical dataset where each of 569 patient records is labeled malignant or benign based on 30 digitized cell nucleus measurements. The stakes of the problem frame the model evaluation: missing a true malignant case (false negative) is costlier than a false alarm, which motivated the exploration of recall-focused evaluation alongside overall accuracy.
+      </p>
+
+      <div class="method-block">
+        <span class="method-label">k-Nearest Neighbors</span>
+        <h3>Hyperparameter Tuning and Overfitting</h3>
+        <p>
+          KNN classifiers were built and evaluated at k=1 and k=15, then a parameter sweep across all odd values of k from 1 to 19 identified the optimal value for test set accuracy. Separately, the same sweep was run optimizing for training set accuracy instead — a deliberate overfitting exercise. At k=1, the model achieved perfect training accuracy but lower test accuracy, illustrating the classic overfitting signature. The gap between training-optimized and test-optimized k values quantified exactly how much performance was being sacrificed by selecting on the wrong metric.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Support Vector Classifier</span>
+        <h3>Gamma Sweep with Validation Curves</h3>
+        <p>
+          An SVC with an RBF kernel was evaluated across six values of the gamma parameter (1e-7 to 1e-2) using scikit-learn's <code>validation_curve</code> with 3-fold cross-validation. At very low gamma, the decision boundary is too smooth — the model underfits. At very high gamma, the boundary becomes too sensitive to individual training points — the model overfits, with training accuracy near 1.0 and test accuracy dropping sharply. The optimal gamma produced the highest cross-validated test accuracy and was identified programmatically from the resulting accuracy curves.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">One-Hot Encoding</span>
+        <h3>Preparing Categorical Features for ML Models</h3>
+        <p>
+          A separate component of the classification work focused on preprocessing: applying one-hot encoding to categorical features in a housing price dataset using scikit-learn's <code>OneHotEncoder</code>. The implementation correctly fits the encoder on training data only and applies the transform to both sets — avoiding data leakage — and handles unseen categories in the test set through the <code>handle_unknown</code> parameter.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Key Insights -->
+    <section class="project-section page-end" id="insights">
+      <h2>Key Insights</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Model complexity and generalization follow a predictable pattern — in both regression and classification.</strong>
+          Whether it's polynomial degree or the gamma parameter of an RBF kernel, the relationship between complexity and test performance follows the same arc: underfitting at one extreme, overfitting at the other, and a sweet spot in between that requires empirical search rather than intuition.
+        </li>
+        <li>
+          <strong>Regularization recovers signal from noise.</strong>
+          Lasso's performance on the gold standard test set showed that penalizing model complexity isn't just about preventing overfitting on the training data — it actively improves the model's ability to approximate the true underlying function, even when that function is unknown in practice.
+        </li>
+        <li>
+          <strong>Optimizing on the wrong metric produces measurably worse models.</strong>
+          The overfitting exercise with KNN made this concrete: selecting k based on training accuracy gave a model that looked better in development but performed worse on held-out data. The gap was quantifiable and instructive — not just a theoretical warning.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spam Email Classification | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .method-block { margin: 36px 0; }
+    .method-block h3 {
+      font-size: 1.05rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .method-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+    .method-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .metric-row {
+      display: flex;
+      gap: 16px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .metric-card {
+      flex: 1;
+      min-width: 120px;
+      border: 1px solid #eee;
+      padding: 14px 16px;
+    }
+    .metric-card .metric-value {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #222;
+    }
+    .metric-card .metric-label {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Spam Email Classification: Precision, Recall, and the Cost of Being Wrong</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 542: Supervised Learning &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; December 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#framing">The Precision-Recall Tradeoff</a></li>
+          <li><a href="#methods">Methods & Evaluation</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#insights">Key Insights</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project was completed as part of SIADS 542: Supervised Learning at the University of Michigan. The task is binary classification: given features extracted from email content, identify whether a message is spam (Class 1) or legitimate (Class 0). What makes spam detection analytically interesting is that the two types of errors have very different costs — making it a natural case study in precision-recall tradeoffs and threshold selection.
+      </p>
+      <p>
+        The analysis builds from baseline dummy classifiers through SVC and Logistic Regression, evaluating each model with confusion matrices, precision-recall curves, ROC curves, and GridSearchCV over regularization parameters. A final comparison between normalized and unnormalized features demonstrates the concrete impact of feature scaling on classifier performance.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Logistic Regression</span>
+        <span class="tag">Support Vector Classifier</span>
+        <span class="tag">Precision-Recall Curves</span>
+        <span class="tag">ROC Curves</span>
+        <span class="tag">Confusion Matrix</span>
+        <span class="tag">GridSearchCV</span>
+        <span class="tag">Feature Normalization</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">~86%</div>
+          <div class="label">Logistic Regression accuracy on test set</div>
+        </div>
+        <div class="stat">
+          <div class="number">~90%</div>
+          <div class="label">Precision at optimized regularization</div>
+        </div>
+        <div class="stat">
+          <div class="number">12</div>
+          <div class="label">Hyperparameter combinations evaluated in GridSearchCV</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Framing -->
+    <section class="project-section" id="framing">
+      <h2>The Precision-Recall Tradeoff</h2>
+      <p>
+        Spam detection is a canonical example of asymmetric error costs. A false positive — flagging a legitimate email as spam — causes a user to miss a real message, which is often the more damaging outcome. A false negative — letting spam through — is annoying but recoverable. This asymmetry means overall accuracy is the wrong metric to optimize: a classifier that maximizes accuracy might still let through a lot of spam or, worse, incorrectly filter legitimate messages at an unacceptable rate.
+      </p>
+      <p>
+        The project frames every modeling decision around this tradeoff explicitly. Rather than reporting a single accuracy number, each classifier is evaluated with confusion matrices that make false positives and false negatives visible, precision-recall curves that show how the tradeoff shifts with decision threshold, and ROC curves that summarize performance across all possible thresholds. The GridSearchCV optimization targets precision specifically — reflecting the real-world priority of a spam filter that doesn't lose good emails.
+      </p>
+    </section>
+
+    <!-- 3. Methods -->
+    <section class="project-section" id="methods">
+      <h2>Methods & Evaluation</h2>
+
+      <div class="method-block">
+        <span class="method-label">Baseline</span>
+        <h3>Dummy Classifiers</h3>
+        <p>
+          Two dummy classifiers established the baseline: one using stratified random prediction (respecting the training label distribution) and one always predicting the majority class. Comparing their precision, recall, and accuracy made clear how much headroom a real classifier needs to be useful — and illustrated why the majority-class dummy has high accuracy but zero recall for spam.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Model 1</span>
+        <h3>Support Vector Classifier</h3>
+        <p>
+          An SVC with default hyperparameters was fit on standardized training features and evaluated on the test set. A second SVC with parameters <code>C=1e9, gamma=1e-8</code> was used to explore decision function thresholds — classifying instances as spam if their raw decision score exceeded −100, rather than using the standard 0 threshold. This produced a confusion matrix that traded precision for recall, illustrating how threshold choice directly controls which type of error the model commits more of.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Model 2</span>
+        <h3>Logistic Regression with Precision-Recall & ROC Analysis</h3>
+        <p>
+          A Logistic Regression classifier was evaluated using both the precision-recall curve and the ROC curve on the test set. From the precision-recall curve, the recall at a precision of 0.90 was extracted programmatically — answering the practical question: if we set the filter to flag only messages we're 90% sure are spam, how much spam do we actually catch? The ROC curve answered the complementary question: at a false positive rate of 10%, what true positive rate does the model achieve?
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Hyperparameter Search</span>
+        <h3>GridSearchCV over Regularization Strength and Penalty Type</h3>
+        <p>
+          A GridSearchCV over six values of C (0.005 to 10.0) and two penalty types (L1 and L2) was run with 5-fold cross-validation, optimizing for precision. The mean cross-validated precision for each of the 12 combinations was returned as a 6×2 array and visualized as a heatmap — showing how regularization strength and penalty type jointly affect the spam filter's precision across folds.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Feature Scaling</span>
+        <h3>Normalized vs. Unnormalized Features</h3>
+        <p>
+          The GridSearchCV was re-run on raw, unnormalized features and the best precision from each run was compared. Feature normalization was applied correctly — fitting the <code>StandardScaler</code> on training data only and applying the transform to both sets — to avoid data leakage. The performance gap between the normalized and unnormalized runs demonstrated concretely that regularized linear models are sensitive to feature scale: without normalization, the regularization penalty is applied unevenly across features, degrading precision meaningfully.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Results -->
+    <section class="project-section" id="results">
+      <h2>Results</h2>
+      <p>
+        The Logistic Regression classifier with optimized regularization produced the strongest results. Evaluated on the test set with default threshold:
+      </p>
+      <div class="metric-row">
+        <div class="metric-card">
+          <div class="metric-value">392</div>
+          <div class="metric-label">True positives (spam correctly flagged)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">43</div>
+          <div class="metric-label">False positives (good email flagged as spam)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">68</div>
+          <div class="metric-label">False negatives (spam that got through)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">0.901</div>
+          <div class="metric-label">Precision</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">0.852</div>
+          <div class="metric-label">Recall</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">0.878</div>
+          <div class="metric-label">Accuracy</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Insights -->
+    <section class="project-section page-end" id="insights">
+      <h2>Key Insights</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Accuracy is a misleading metric when error costs are asymmetric.</strong>
+          The majority-class dummy classifier achieved ~61% accuracy by predicting everything as non-spam — but its recall for spam was zero. A model optimized purely for accuracy in this domain could look good on paper while failing completely at the actual task.
+        </li>
+        <li>
+          <strong>Decision threshold selection is a modeling decision, not just an implementation detail.</strong>
+          Adjusting the SVC decision threshold from 0 to −100 shifted the confusion matrix substantially — catching more spam at the cost of more false positives. The precision-recall curve makes this tradeoff navigable: it shows exactly what recall is achievable at any given precision target, letting a practitioner choose the operating point that matches the real-world cost structure.
+        </li>
+        <li>
+          <strong>Feature normalization has a measurable impact on regularized classifiers.</strong>
+          The unnormalized GridSearchCV produced meaningfully lower best precision than the normalized version. This is expected — L1 and L2 penalties assume features are on a common scale — but seeing the gap quantified reinforced why normalization is a required step, not an optional one.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
