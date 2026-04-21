@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horizon Charts | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC ── */
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Sections ── */
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    /* ── Stat blocks ── */
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ── Screenshots ── */
+    .screenshot {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: block;
+      margin: 24px 0;
+    }
+
+    /* ── Viz blocks ── */
+    .viz-block { margin: 40px 0; }
+    .viz-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .viz-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+    .viz-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    /* ── Feature grid ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .feature-item {
+      border: 1px solid #eee;
+      padding: 16px 18px;
+    }
+    .feature-item h4 {
+      font-size: 0.9rem;
+      color: #222;
+      margin-bottom: 6px;
+    }
+    .feature-item p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+    }
+
+    /* ── Code block ── */
+    .code-block {
+      background: #f7f7f7;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #333;
+      overflow-x: auto;
+    }
+
+    /* ── Sub-headers inside sections ── */
+    .section-h3 {
+      font-size: 1.05rem;
+      margin: 30px 0 12px;
+      color: #222;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Building a Generalized Horizon Chart Renderer in Altair</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 521: Information Visualization I &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; October 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#what">What is a Horizon Chart?</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#outputs">Chart Outputs</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Project Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project was completed as part of SIADS 521: Information Visualization I at the University of Michigan. The goal was to build a generalized horizon chart renderer in Python and Altair from scratch — a chart type not natively supported by the library — capable of handling any time series input with configurable bands, colors, and axis formatting.
+      </p>
+      <p>
+        Horizon charts are a space-efficient technique for displaying dense time series data, commonly used in financial dashboards, climate visualization, and systems monitoring. Building one in Altair required understanding the chart type at a construction level — not just what it looks like, but the exact layering and clipping mechanics needed to produce it programmatically from arbitrary input data.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">Altair</span>
+        <span class="tag">pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Time Series Visualization</span>
+        <span class="tag">Algorithm Design</span>
+        <span class="tag">Data Visualization</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">4</div>
+          <div class="label">Configurable band depth</div>
+        </div>
+        <div class="stat">
+          <div class="number">3</div>
+          <div class="label">Value modes (positive, negative, mixed)</div>
+        </div>
+        <div class="stat">
+          <div class="number">5</div>
+          <div class="label">Helper functions with input validation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. What is a Horizon Chart -->
+    <section class="project-section" id="what">
+      <h2>What is a Horizon Chart?</h2>
+      <p>
+        A horizon chart compresses a time series area chart into a fraction of its height by slicing it into equal-height bands and overlaying them. Each band is assigned a progressively darker color — lighter for values near the baseline, darker for extremes — so color intensity encodes magnitude while the shape of the area encodes trend. The mirrored variant handles negative values by folding at zero: positive values are encoded in one color scale (blues), negative in another (oranges/reds), overlaid in the same compact view.
+      </p>
+      <p>
+        What looks like a single chart is actually multiple Altair area layers — one per band — each clipped to its own domain and offset by the appropriate band height. The viewer sees one compact visualization; the renderer is assembling it layer by layer.
+      </p>
+    </section>
+
+    <!-- 3. Implementation -->
+    <section class="project-section" id="implementation">
+      <h2>Implementation</h2>
+      <p>
+        The renderer is built around a single public function, <code>horizonChart()</code>, supported by five helper functions that each own one piece of the construction pipeline. This keeps the main function readable and each concern independently testable.
+      </p>
+
+      <div class="code-block">horizonChart(source, bands, timecol, valcol, width=500, height=75,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;poscolors=[...], negcolors=[...], xaxis=None)</div>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h4>validate_dataset_quality()</h4>
+          <p>Raises descriptive exceptions for empty dataframes, non-numeric columns, and null values before any rendering attempt is made.</p>
+        </div>
+        <div class="feature-item">
+          <h4>get_value_mix()</h4>
+          <p>Classifies the series as all-positive, all-negative, or mixed — determining which band construction paths are activated downstream.</p>
+        </div>
+        <div class="feature-item">
+          <h4>color_validation()</h4>
+          <p>Checks that the requested band count doesn't exceed the number of available colors, raising a clear exception if it does.</p>
+        </div>
+        <div class="feature-item">
+          <h4>get_band_heights()</h4>
+          <p>Calculates band height from the actual data range rather than hardcoding values, so the chart scales correctly to any input series.</p>
+        </div>
+        <div class="feature-item">
+          <h4>create_band()</h4>
+          <p>Constructs a single Altair area layer for a given band index — handling offset calculation, domain clipping, and color assignment for both positive and negative directions.</p>
+        </div>
+      </div>
+
+      <h3 class="section-h3">Band Construction</h3>
+      <p>
+        Each band is an Altair area chart with <code>clip=True</code> and a fixed <code>domain</code> on the y-axis equal to <code>[0, band_height]</code>. For band <code>i</code>, the underlying values are offset downward by <code>band_height × i</code> using Altair's <code>transform_calculate</code> — so the first band shows values from 0 to the band height, the second folds values from band_height to 2× band_height back into the same vertical space, and so on. All bands are then composed using Altair's layer operator (<code>+</code>) in a loop, producing a single chart object that renders as one cohesive visualization.
+      </p>
+
+      <h3 class="section-h3">Handling Mixed Values</h3>
+      <p>
+        Mixed positive/negative series require separate band stacks for each direction. The function generates positive bands from the raw values and negative bands by negating them, then composes both stacks into one chart. Band heights for each direction are calculated independently from the actual positive and negative ranges, so asymmetric data renders correctly without distortion — a series ranging from -2 to +10 won't have equal-height bands on both sides.
+      </p>
+
+      <h3 class="section-h3">Interpolation</h3>
+      <p>
+        Default Altair area interpolation produces visual artifacts when negative values are introduced — it draws connecting lines between points in ways that incorrectly cross the zero axis. The renderer uses <code>interpolate='monotone'</code> throughout, which preserves the shape of the series while eliminating these crossing artifacts across both positive and negative band layers.
+      </p>
+
+      <h3 class="section-h3">Input Validation</h3>
+      <p>
+        Rather than failing silently or producing a malformed chart, the renderer surfaces a custom exception with a descriptive message for each failure mode: empty dataframe, non-numeric column, all-zero values, and band count exceeding available colors. This makes the function behave like a proper library interface rather than a notebook script.
+      </p>
+    </section>
+
+    <!-- 4. Chart Outputs -->
+    <section class="project-section page-end" id="outputs">
+      <h2>Chart Outputs</h2>
+      <p>
+        The renderer was validated against four input types: positive-only, negative-only, mixed positive/negative, and real-world multi-series weather data.
+      </p>
+
+      <div class="viz-block">
+        <span class="viz-label">Positive-only series &nbsp;·&nbsp; 2 bands</span>
+        <h3>Sine Wave — Positive Values</h3>
+        <p>
+          A shifted sine wave with all-positive values. The lighter blue band covers the first range; the darker blue covers the second. Peaks appear darker as they exceed the first band threshold — amplitude is readable from color intensity without needing to read the y-axis.
+        </p>
+        <img src="../assets/img/horizon-positive.png" class="screenshot" alt="Horizon chart positive values" />
+      </div>
+
+      <div class="viz-block">
+        <span class="viz-label">Mixed positive and negative series &nbsp;·&nbsp; 4 bands</span>
+        <h3>Sine Wave — Mixed Values</h3>
+        <p>
+          The full sine wave rendered with 4 bands per direction. Blues encode positive values; reds and oranges encode negative. The oscillation is immediately readable in a compact height, and color intensity makes amplitude variation visible at a glance without reading axis values.
+        </p>
+        <img src="../assets/img/horizon-mixed.png" class="screenshot" alt="Horizon chart mixed values" />
+      </div>
+
+      <div class="viz-block">
+        <span class="viz-label">Multi-series real-world data &nbsp;·&nbsp; 4 bands each</span>
+        <h3>Seattle Weather — Wind, Min Temp, Max Temp</h3>
+        <p>
+          Three horizon charts stacked vertically, each showing the rolling percentage change in a different weather metric over time. This is the primary use case for horizon charts: comparing multiple dense time series in the vertical space a single standard chart would normally occupy. All three series are simultaneously visible without overlap or scale distortion.
+        </p>
+        <img src="../assets/img/horizon-weather.png" class="screenshot" alt="Stacked horizon charts for Seattle weather data" />
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
