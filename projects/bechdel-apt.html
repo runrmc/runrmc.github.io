@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bechdel Test & APT Algorithm | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC ── */
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Sections ── */
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    /* ── Stat blocks ── */
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ── Screenshot placeholder ── */
+    .screenshot-placeholder {
+      background: #f7f7f7;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      margin: 24px 0;
+      text-align: center;
+      gap: 10px;
+    }
+    .screenshot-placeholder .ph-icon {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+    .screenshot-placeholder .ph-label {
+      font-size: 0.85rem;
+      color: #aaa;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Screenshot (real image, once added) ── */
+    .screenshot {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: block;
+      margin: 24px 0;
+    }
+
+    /* ── Viz blocks ── */
+    .viz-block {
+      margin: 40px 0;
+    }
+    .viz-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .viz-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+    .viz-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    /* ── Insight callout ── */
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    /* ── APT table ── */
+    .apt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.9rem;
+    }
+    .apt-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: #f7f7f7;
+      border: 1px solid #eee;
+      color: #555;
+      font-weight: normal;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .apt-table td {
+      padding: 10px 14px;
+      border: 1px solid #eee;
+      color: #444;
+      vertical-align: top;
+    }
+    .apt-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Gender Representation in Film: Implementing the APT Visualization Algorithm</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 521: Information Visualization I &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; October 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#apt">The APT Algorithm</a></li>
+          <li><a href="#data">The Data</a></li>
+          <li><a href="#visualizations">Visualization Outputs</a></li>
+          <li><a href="#insights">Key Insights</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Project Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project was completed as part of SIADS 521: Information Visualization I at the University of Michigan. The assignment had two components: implementing the Mackinlay APT (A Presentation Tool) algorithm — a classic system for automatically selecting optimal visual encodings for a given set of variables — and applying it to analyze gender representation in the top 20 grossing films of 2016 alongside their Bechdel Test results.
+      </p>
+      <p>
+        The APT algorithm formalizes something visualization practitioners do intuitively: given a set of variables and their data types, which visual channels (position, color, shape, size) should be assigned to which variables, and in what order? Implementing it from scratch required translating the algorithm's ranked encoding preferences into a functioning Python system, handling conflicts between channels that map to the same underlying Altair property, and surfacing useful exceptions when valid encodings can't be found.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">Altair</span>
+        <span class="tag">pandas</span>
+        <span class="tag">Algorithm Design</span>
+        <span class="tag">Grammar of Graphics</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Encoding Theory</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">20</div>
+          <div class="label">Top-grossing films analyzed (2016)</div>
+        </div>
+        <div class="stat">
+          <div class="number">3</div>
+          <div class="label">Variable types supported (Q, O, N)</div>
+        </div>
+        <div class="stat">
+          <div class="number">4</div>
+          <div class="label">Altair encoding channels implemented</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. The APT Algorithm -->
+    <section class="project-section" id="apt">
+      <h2>The APT Algorithm</h2>
+      <p>
+        First described by Jock Mackinlay in 1986, APT formalizes the process of selecting visual encodings by ranking channels in order of effectiveness for each data type. For quantitative variables, position (x, y) is most effective; color density and hue are less so. For nominal variables, the preference order shifts — hue becomes more appropriate, and size less so. The algorithm works by assigning the highest-ranked available channel to the most important variable, then iterating through remaining variables and channels until all are assigned or a conflict is raised.
+      </p>
+      <p>
+        The implementation required two core functions. The first, <code>selectEncodings()</code>, accepts an ordered list of variables with their types and returns each variable paired with its assigned encoding channel. The second, <code>generateAPTVis()</code>, takes those assignments and builds a working Altair chart by iterating through the encoded variables and layering each channel incrementally.
+      </p>
+      <p>
+        Several non-trivial design decisions were required beyond the basic algorithm. Altair's Point mark doesn't support all APT channels (volume, texture, connection, and containment have no equivalent), so those were excluded with documented justification. Color density, saturation, and hue all map to Altair's single <code>Color</code> channel — meaning only one can be used per chart, and the others must be blocked once one is assigned. The implementation surfaces a custom <code>EncodingException</code> with a descriptive message when no valid encoding can be found for a variable.
+      </p>
+
+      <p style="font-size: 0.85rem; color: #777; margin-bottom: 6px;">Example encoding assignments produced by the algorithm:</p>
+      <table class="apt-table">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Type</th>
+            <th>Assigned Encoding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>q1 (quantitative)</td><td>Q</td><td>x-position</td></tr>
+          <tr><td>q2 (quantitative)</td><td>Q</td><td>y-position</td></tr>
+          <tr><td>c1 (nominal)</td><td>N</td><td>hue (color)</td></tr>
+          <tr><td>c2 (nominal)</td><td>N</td><td>shape</td></tr>
+        </tbody>
+      </table>
+
+      <div class="screenshot-placeholder">
+        <span class="ph-icon">📸</span>
+        <span class="ph-label">Screenshot coming — capture APT output from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/apt-output.png" class="screenshot" alt="APT algorithm visualization output" /&gt;</code></span>
+      </div>
+    </section>
+
+    <!-- 3. The Data -->
+    <section class="project-section" id="data">
+      <h2>The Data</h2>
+      <p>
+        The dataset was derived from FiveThirtyEight's Next Bechdel project, combining three sources: Bechdel Test pass/fail results for the top 50 grossing films of 2016, cast gender breakdowns by role type (lead, supporting, ensemble), and domestic box office figures. The combined dataset covers the top 20 films, with one row per movie-role type-gender combination — allowing analysis of both how films performed commercially and how they were staffed on screen.
+      </p>
+      <p>
+        The Bechdel Test is a simple but widely-cited measure of gender representation in film: a movie passes if it features at least two named women who speak to each other about something other than a man. While a low bar, pass rates across mainstream Hollywood releases are often lower than expected.
+      </p>
+    </section>
+
+    <!-- 4. Visualization Outputs -->
+    <section class="project-section" id="visualizations">
+      <h2>Visualization Outputs</h2>
+      <p>
+        Beyond the APT implementation, the assignment involved building a series of Altair visualizations using the Bechdel dataset — including a dumbbell plot comparing male and female cast counts by role type and movie, a stacked bar chart of female cast composition by film, and a combined three-panel view pairing male/female cast counts with Bechdel pass/fail status and box office rank.
+      </p>
+
+      <div class="viz-block">
+        <span class="viz-label">Dumbbell Plot</span>
+        <h3>Male vs. Female Cast Count by Role Type</h3>
+        <p>
+          A ranged dot plot connecting male and female actor counts for each film, colored by Bechdel pass/fail status. The range line makes the gap between genders immediately visible, and the color encoding layers in whether the film met even the minimum representation threshold.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/bechdel-dumbbell.png" class="screenshot" alt="Dumbbell plot of cast counts by gender" /&gt;</code></span>
+        </div>
+      </div>
+
+      <div class="viz-block">
+        <span class="viz-label">Combined Panel View</span>
+        <h3>Cast Composition, Rank, and Bechdel Status</h3>
+        <p>
+          A three-panel compound chart showing male cast counts, female cast counts, and box office rank side by side — with Bechdel pass/fail color-encoded in the center panel. Laying these views out together allows direct comparison across all three dimensions for each film without switching between charts.
+        </p>
+        <div class="screenshot-placeholder">
+          <span class="ph-icon">📸</span>
+          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/bechdel-panel.png" class="screenshot" alt="Three-panel compound chart" /&gt;</code></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Key Insights -->
+    <section class="project-section page-end" id="insights">
+      <h2>Key Insights</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Encoding selection is a solvable problem — with constraints.</strong>
+          The APT algorithm works cleanly for most variable combinations, but real implementation surfaces meaningful edge cases: channels that conflict, marks that don't support certain encodings, and situations where the algorithm simply runs out of valid options. Handling these gracefully — with informative exceptions rather than silent failures — is as important as the algorithm itself.
+        </li>
+        <li>
+          <strong>Gender gaps in cast composition are visible across most films.</strong>
+          Across the top 20 films of 2016, male cast members consistently outnumber female cast members in supporting and ensemble roles. The gap is widest in films that failed the Bechdel Test, but even several passing films showed significant imbalances in total cast composition.
+        </li>
+        <li>
+          <strong>Box office performance shows no consistent relationship with Bechdel results.</strong>
+          High-grossing films appear on both sides of the Bechdel pass/fail divide. The data doesn't support the claim that representation comes at a commercial cost — nor that it drives commercial success.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
