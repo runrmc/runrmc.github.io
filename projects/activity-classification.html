@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physiological Activity Classification | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .method-block { margin: 36px 0; }
+    .method-block h3 {
+      font-size: 1.05rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .method-block p {
+      color: #444;
+      margin-bottom: 0;
+    }
+    .method-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .callout {
+      border: 1px solid #ddd;
+      border-left: 3px solid #222;
+      padding: 18px 20px;
+      margin: 24px 0;
+      background: #fafafa;
+    }
+    .callout p {
+      margin: 0;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .callout strong {
+      color: #222;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Classifying Physical Activity from Wearable Sensor Data</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      SIADS 542: Supervised Learning &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; December 2025
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#leakage">Identifying and Solving Data Leakage</a></li>
+          <li><a href="#methods">Modeling & Feature Selection</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#insights">Key Insights</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        This project was completed as part of SIADS 542: Supervised Learning at the University of Michigan. The goal is four-class activity classification: given physiological sensor measurements from 40 test subjects, predict which type of activity the subject is performing — neutral, emotional, mental, or physical — using no more than 10 of the 533 available features.
+      </p>
+      <p>
+        The dataset contains 4,480 rows, one per sensor collection event, across 40 subjects each exposed to 28 collection events per activity type. The feature constraint — 10 of 533 — reflects a realistic deployment scenario where minimizing sensor count and computational overhead matters. The open-ended final task required building a feature selection pipeline and optimizing a model to maximize ROC-AUC under that constraint.
+      </p>
+      <p>
+        The most important contribution of the project isn't the final model — it's identifying and correcting a structural data leakage problem that inflated baseline accuracy by over 20 percentage points.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Gradient Boosting</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">Feature Selection</span>
+        <span class="tag">Multi-Class Classification</span>
+        <span class="tag">ROC-AUC</span>
+        <span class="tag">Data Leakage Detection</span>
+        <span class="tag">Custom Train/Test Split</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">4,480</div>
+          <div class="label">Sensor observations across 40 subjects</div>
+        </div>
+        <div class="stat">
+          <div class="number">533</div>
+          <div class="label">Available features</div>
+        </div>
+        <div class="stat">
+          <div class="number">10</div>
+          <div class="label">Maximum features allowed in final model</div>
+        </div>
+        <div class="stat">
+          <div class="number">0.855</div>
+          <div class="label">ROC-AUC (macro, one-vs-rest)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Data Leakage -->
+    <section class="project-section" id="leakage">
+      <h2>Identifying and Solving Data Leakage</h2>
+      <p>
+        The first significant finding came before any modeling. A standard scikit-learn <code>train_test_split</code> on this dataset produces an inflated accuracy score — around 80.7% — that makes the baseline model look far more capable than it actually is. The cause is a structural property of the data: each of the 40 subjects appears across hundreds of rows, and a row-level random split assigns some of that subject's rows to training and others to the test set.
+      </p>
+
+      <div class="callout">
+        <p><strong>The problem:</strong> When the same subject appears in both training and test sets, the model can learn subject-specific physiological patterns and exploit them at test time. This isn't activity classification — it's subject recognition. The model memorizes individuals rather than generalizing to new people.</p>
+      </div>
+
+      <p>
+        To eliminate this, a custom <code>custom_train_test_split()</code> function was built that splits by subject rather than by row. Test subjects are selected at random and all of their rows are held out entirely — ensuring the model never sees any data from a test subject during training. When the baseline model was re-run with the corrected split, accuracy dropped to ~58.6%, a 22-point reduction that reflects what the model actually knows how to do on genuinely unseen subjects.
+      </p>
+      <p>
+        The function accepts both float and integer values for <code>test_size</code> (proportion vs. count of subjects), uses <code>numpy.random.default_rng()</code> for reproducibility, and rounds up subject counts in accordance with scikit-learn conventions.
+      </p>
+    </section>
+
+    <!-- 3. Methods -->
+    <section class="project-section" id="methods">
+      <h2>Modeling & Feature Selection</h2>
+      <p>
+        With a valid train/test split in place, the modeling work proceeded in two stages: establishing performance with interpretable baseline models, then building an optimized pipeline for the constrained 10-feature final task.
+      </p>
+
+      <div class="method-block">
+        <span class="method-label">Baseline</span>
+        <h3>Decision Tree & Logistic Regression</h3>
+        <p>
+          A Decision Tree classifier using a subset of MAD (median absolute deviation) features from the sensor data served as the baseline after the corrected split. Logistic Regression with StandardScaler preprocessing was then applied to the same feature subset, and its multi-class confusion matrix was analyzed in detail — identifying which activity pairs were most often confused and quantifying per-class precision and recall. Emotional and mental activities showed the most cross-class confusion, which aligned with the expectation that physiological signals for cognitive states are harder to separate than signals for physical movement.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Feature Importance</span>
+        <h3>Random Forest Feature Ranking</h3>
+        <p>
+          A Random Forest classifier was used to rank all MAD features by importance, then a loop evaluated models trained on incrementally increasing feature counts — one feature, then two, then three, and so on — tracking how accuracy improved with each addition. This revealed that the top few features captured most of the available signal, with diminishing returns beyond the top 5 or 6. The importance scores and accuracy curve were plotted together, making the feature value cutoff visually interpretable.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <span class="method-label">Final Model</span>
+        <h3>Gradient Boosting with Two-Stage Feature Selection</h3>
+        <p>
+          The final model used a two-stage approach. First, a lightweight GradientBoostingClassifier (25 estimators, max depth 5) was trained on all numeric features to generate importance scores across the full feature space. The top 10 features by importance were selected. A second, more fully-specified GradientBoostingClassifier (100 estimators) was then trained on those 10 features and evaluated using ROC-AUC with macro averaging and a one-vs-rest multi-class strategy. This approach is computationally tractable — exhaustively searching all C(533, 10) ≈ 4.7×10²⁰ combinations is infeasible — and still achieves meaningful feature selection by using the model's own learned signal to guide the search.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Results -->
+    <section class="project-section" id="results">
+      <h2>Results</h2>
+      <p>
+        The final Gradient Boosting model achieved a ROC-AUC of <strong>0.855</strong> (macro, one-vs-rest) using 10 features selected from 533. This exceeded the assignment's top scoring threshold of 0.84 and approached the 0.86 threshold. For context, the corrected baseline Decision Tree scored ~58.6% accuracy — the ROC-AUC improvement reflects both the stronger model and the more informative feature set identified through two-stage selection.
+      </p>
+      <p>
+        The confusion matrix from the Logistic Regression baseline showed mental activity as the hardest to classify correctly, with emotional activity being the most common misclassification — suggesting that the physiological signals for cognitive and emotional states overlap more than those for physical and neutral states.
+      </p>
+    </section>
+
+    <!-- 5. Insights -->
+    <section class="project-section page-end" id="insights">
+      <h2>Key Insights</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Data leakage can inflate accuracy by more than 20 percentage points without any obvious signal in the code.</strong>
+          Standard train/test split is the right default for most tabular datasets, but it's wrong whenever rows belonging to the same entity need to stay together. Recognizing the structure of the data — subjects with repeated measurements — was the critical step that made the rest of the analysis meaningful.
+        </li>
+        <li>
+          <strong>Feature selection under a hard constraint requires a tractable strategy.</strong>
+          With 533 features and a limit of 10, exhaustive search is impossible. Using a fast model to generate importance rankings and then re-training a stronger model on the top candidates is a practical and effective approach — it leverages the model's own learned signal to guide the search rather than relying on domain knowledge or random sampling.
+        </li>
+        <li>
+          <strong>Cognitive and emotional activity states are harder to distinguish from physiology alone.</strong>
+          The confusion matrix consistently showed higher error rates between mental and emotional labels than between physical and neutral ones. This is an inherently harder separation — physical activity produces clear, distinct physiological signals, while the differences between thinking hard and feeling an emotion are subtler and more individual.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
