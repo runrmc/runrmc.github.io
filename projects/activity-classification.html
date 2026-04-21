@@ -233,7 +233,7 @@
           <div class="label">Maximum features allowed in final model</div>
         </div>
         <div class="stat">
-          <div class="number">0.855</div>
+          <div class="number">0.913</div>
           <div class="label">ROC-AUC (macro, one-vs-rest)</div>
         </div>
       </div>
@@ -294,10 +294,10 @@
     <section class="project-section" id="results">
       <h2>Results</h2>
       <p>
-        The final Gradient Boosting model achieved a ROC-AUC of <strong>0.855</strong> (macro, one-vs-rest) using 10 features selected from 533. This exceeded the assignment's top scoring threshold of 0.84 and approached the 0.86 threshold. For context, the corrected baseline Decision Tree scored ~58.6% accuracy — the ROC-AUC improvement reflects both the stronger model and the more informative feature set identified through two-stage selection.
+        The final Gradient Boosting model achieved a ROC-AUC of <strong>0.913</strong> (macro, one-vs-rest) using 10 features selected from 533 — clearing the assignment's top scoring threshold of ≥0.90. The 10 selected features spanned multiple sensor modalities including ECG heart rate variability, electrodermal activity, and several interbeat interval (IT) metrics, suggesting the model found complementary signal across different physiological channels rather than concentrating on a single sensor type.
       </p>
       <p>
-        The confusion matrix from the Logistic Regression baseline showed mental activity as the hardest to classify correctly, with emotional activity being the most common misclassification — suggesting that the physiological signals for cognitive and emotional states overlap more than those for physical and neutral states.
+        For context, the corrected baseline Decision Tree using a standard row-level split scored ~80.7% accuracy — but this figure was inflated by data leakage. After applying the subject-aware split, the same model dropped to ~58.6%, which is the honest starting point. The final model's 0.913 ROC-AUC represents genuine improvement from that realistic baseline, not from a leaked one.
       </p>
     </section>
 
