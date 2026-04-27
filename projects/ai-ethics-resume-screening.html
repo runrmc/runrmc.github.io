@@ -210,6 +210,41 @@
     .doc-btn.secondary { background: #f7f7f7; }
     .doc-btn.secondary:hover { background: #efefef; }
 
+    /* ── Deliverables ── */
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .deliverable-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid #eee;
+      text-decoration: none;
+      color: #222;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .deliverable-item:hover {
+      border-color: #aaa;
+      background-color: #fafafa;
+    }
+    .deliverable-item .deliverable-info h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .deliverable-item .deliverable-info p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+    }
+    .deliverable-item .deliverable-arrow {
+      font-size: 1rem;
+      color: #aaa;
+    }
+
     .page-end { padding-bottom: 100px; }
 
   </style>
@@ -240,7 +275,8 @@
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#scenario">Algorithm, Scenario & Ethics Risks</a></li>
           <li><a href="#recommendation">Recommendation</a></li>
-          <li><a href="#presentation">Presentation & Slides</a></li>
+          <li><a href="#presentation">Presentation</a></li>
+          <li><a href="#deliverable">Deliverable</a></li>
         </ol>
       </div>
     </div>
@@ -312,8 +348,8 @@
     </section>
 
     <!-- 4. Presentation -->
-    <section class="project-section page-end" id="presentation">
-      <h2>Presentation & Slides</h2>
+    <section class="project-section" id="presentation">
+      <h2>Presentation</h2>
       <p>
         The findings were delivered as a five-to-seven minute video presentation structured for a dual audience: organizational stakeholders who needed to understand the ethics risks in plain language, and University of Michigan instructors evaluating the application of course frameworks. The presentation walks through the scenario, system diagram, course concepts, and recommendation in sequence.
       </p>
@@ -331,7 +367,7 @@
     <!-- 5. Deliverable -->
     <section class="project-section page-end" id="deliverable">
       <h2>Deliverable</h2>
-      <div class="deliverable">
+      <div class="deliverables">
         <a class="deliverable-item" href="../assets/files/503-ai-ethics-presentation.pdf" target="_blank">
           <div class="deliverable-info">
             <h4>Presentation Slides</h4>
