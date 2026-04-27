@@ -79,7 +79,14 @@ section {
   line-height: 1.75;
 }
 
-.hero-linkedin {
+.hero-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-link-btn {
   display: inline-block;
   color: #222;
   text-decoration: none;
@@ -90,7 +97,7 @@ section {
   transition: border-color 0.2s, color 0.2s;
 }
 
-.hero-linkedin:hover {
+.hero-link-btn:hover {
   border-color: #888;
   color: #444;
 }
