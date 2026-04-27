@@ -50,6 +50,7 @@ section {
   max-width: 800px;
   margin: 0 auto;
   padding: 48px 20px;
+  scroll-margin-top: 70px;
 }
 
 /* Hero */
