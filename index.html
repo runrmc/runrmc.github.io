@@ -14,68 +14,99 @@
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="resume.html">Resume</a></li>
     </ul>
   </nav>
 
+  <!-- Hero -->
   <section id="hero">
     <img src="profile.jpg" alt="Ryan McCurry" class="profile-photo" />
     <h1>Ryan McCurry</h1>
-    <p>Product Management & Data Science Professional</p>
+    <p class="hero-tagline">Data Science & Analytics Professional</p>
+    <p class="hero-bio">
+      MS candidate in Applied Data Science at the University of Michigan (expected Spring 2027) —
+      building on a background in SaaS and a foundation in Management Information Systems and
+      Operations Management from the University of Arizona.
+    </p>
+    <a class="hero-linkedin" href="https://www.linkedin.com/in/ryan-mccurry/" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:6px;"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.987V9h3.102v1.561h.046c.432-.816 1.489-1.676 3.065-1.676 3.276 0 3.881 2.156 3.881 4.959v6.608zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.554 13.019H3.783V9h3.108v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      linkedin.com/in/ryan-mccurry
+    </a>
   </section>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>I'm a professional with 8 years of experience in SaaS companies, primarily in customer success, now transitioning into product management and data science roles. I hold dual degrees in Management Information Systems and Operations Management from the University of Arizona, and I'm currently pursuing a Master's in Applied Data Science at the University of Michigan (expected Spring 2027).</p>
+  <!-- Resume -->
+  <section id="resume-section">
+    <div class="resume-card">
+      <div class="resume-card-text">
+        <h2 class="resume-card-heading">Background & Experience</h2>
+        <p>8 years of experience in SaaS — detailed work history, education, and skills on my resume page.</p>
+      </div>
+      <a href="resume.html" class="resume-card-btn">View Resume →</a>
+    </div>
   </section>
 
+  <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
-    <div class="project">
-      <h3><a href="projects/acme-aroma.html" style="color: #222; text-decoration: underline;">Employee Turnover Prediction & Strategic Analysis</a></h3>
-      <p>A logistic regression model predicting employee attrition for a manufacturing company, paired with executive-level communication of findings and a ₹318M strategic recommendation.</p>
+
+    <div class="project-category">
+      <h3 class="category-label">Technical Communication &amp; Presentation</h3>
+      <div class="project-tiles">
+        <a href="projects/ai-ethics-resume-screening.html" class="tile">
+          <span class="tile-title">Resume Screening AI: A Data Ethics Analysis</span>
+          <span class="tile-desc">A video presentation analyzing the ethics of a resume screening AI, examining data provenance and power imbalance risks through frameworks from Onuoha (2016) and Kalluri (2020).</span>
+        </a>
+        <a href="projects/acme-aroma.html" class="tile">
+          <span class="tile-title">Employee Turnover Prediction &amp; Strategic Analysis</span>
+          <span class="tile-desc">A logistic regression model predicting employee attrition, paired with executive-level communication of findings and a ₹318M strategic recommendation.</span>
+        </a>
+      </div>
     </div>
-    <div class="project">
-      <h3><a href="projects/nba-shot-analysis.html" style="color: #222; text-decoration: underline;">NBA Shot Analysis: The Evolution of Modern Basketball</a></h3>
-      <p>An interactive Plotly dashboard analyzing 828K shot attempts across 14 NBA seasons, exploring how the three-point revolution reshaped shot selection and which shooting zones are most efficient.</p>
+
+    <div class="project-category">
+      <h3 class="category-label">Data Analysis &amp; Visualization</h3>
+      <div class="project-tiles">
+        <a href="projects/nba-shot-analysis.html" class="tile">
+          <span class="tile-title">NBA Shot Analysis: The Evolution of Modern Basketball</span>
+          <span class="tile-desc">An interactive Plotly dashboard analyzing 828K shot attempts across 14 NBA seasons, exploring how the three-point revolution reshaped shot selection and shooting efficiency.</span>
+        </a>
+        <a href="projects/fitness-performance-analysis.html" class="tile">
+          <span class="tile-title">Fitness Performance Analysis: What GPS Data Reveals About Exercise</span>
+          <span class="tile-desc">A four-part visual analysis of personal GPS fitness data across 64 sessions, building from individual patterns to an interactive geospatial map.</span>
+        </a>
+        <a href="projects/bechdel-apt.html" class="tile">
+          <span class="tile-title">Gender Representation in Film: Implementing the APT Algorithm</span>
+          <span class="tile-desc">An implementation of Mackinlay's APT algorithm for automatic encoding selection, applied to Bechdel Test results across the top 20 grossing films of 2016.</span>
+        </a>
+        <a href="projects/horizon-charts.html" class="tile">
+          <span class="tile-title">Building a Generalized Horizon Chart Renderer in Altair</span>
+          <span class="tile-desc">A from-scratch implementation of mirrored horizon charts in Altair, supporting positive, negative, and mixed time series with configurable bands and color palettes.</span>
+        </a>
+        <a href="projects/activity-classification.html" class="tile">
+          <span class="tile-title">Classifying Physical Activity from Wearable Sensor Data</span>
+          <span class="tile-desc">A four-class activity classifier trained on 4,480 physiological sensor observations across 40 subjects, achieving 0.913 ROC-AUC with only 10 of 533 features.</span>
+        </a>
+      </div>
     </div>
-    <div class="project">
-      <h3><a href="projects/fitness-performance-analysis.html" style="color: #222; text-decoration: underline;">Fitness Performance Analysis: What GPS Data Reveals About Exercise</a></h3>
-      <p>A four-part visual analysis of personal GPS fitness data across 64 exercise sessions, building from individual session patterns to an interactive geospatial map to explain why performance metrics vary.</p>
+
+    <div class="project-category">
+      <h3 class="category-label">Machine Learning</h3>
+      <div class="project-tiles">
+        <a href="projects/regression-classification-fundamentals.html" class="tile">
+          <span class="tile-title">Regression &amp; Classification Fundamentals</span>
+          <span class="tile-desc">An exploration of polynomial regression, Lasso regularization, and the bias-variance tradeoff alongside KNN and SVC classifiers on synthetic and real medical datasets.</span>
+        </a>
+        <a href="projects/spam-classification.html" class="tile">
+          <span class="tile-title">Spam Email Classification: Precision, Recall, and the Cost of Being Wrong</span>
+          <span class="tile-desc">A binary spam classifier built with Logistic Regression and SVC, evaluated through precision-recall curves, ROC curves, and GridSearchCV — with a focus on asymmetric error costs.</span>
+        </a>
+      </div>
     </div>
-    <div class="project">
-      <h3><a href="projects/bechdel-apt.html" style="color: #222; text-decoration: underline;">Gender Representation in Film: Implementing the APT Visualization Algorithm</a></h3>
-      <p>An implementation of Mackinlay's APT algorithm for automatic encoding selection, applied to analyze gender representation and Bechdel Test results across the top 20 grossing films of 2016.</p>
-    </div>
-    <div class="project">
-      <h3><a href="projects/horizon-charts.html" style="color: #222; text-decoration: underline;">Building a Generalized Horizon Chart Renderer in Altair</a></h3>
-      <p>A from-scratch implementation of mirrored horizon charts in Altair, supporting positive, negative, and mixed time series with configurable bands, color palettes, and input validation.</p>
-    </div>
-    <div class="project">
-      <h3><a href="projects/regression-classification-fundamentals.html" style="color: #222; text-decoration: underline;">Regression & Classification Fundamentals</a></h3>
-      <p>An exploration of polynomial regression, Lasso regularization, and the bias-variance tradeoff alongside KNN and SVC classifiers — evaluating how model complexity relates to generalization on both synthetic and real medical datasets.</p>
-    </div>
-    <div class="project">
-      <h3><a href="projects/spam-classification.html" style="color: #222; text-decoration: underline;">Spam Email Classification: Precision, Recall, and the Cost of Being Wrong</a></h3>
-      <p>A binary spam detection classifier built with Logistic Regression and SVC, evaluated through precision-recall curves, ROC curves, confusion matrices, and GridSearchCV — with a focus on asymmetric error costs and the impact of feature normalization.</p>
-    </div>
-    <div class="project">
-      <h3><a href="projects/activity-classification.html" style="color: #222; text-decoration: underline;">Classifying Physical Activity from Wearable Sensor Data</a></h3>
-      <p>A four-class activity classifier trained on 4,480 physiological sensor observations across 40 subjects, achieving 0.913 ROC-AUC with only 10 of 533 features — after identifying and correcting a structural data leakage problem that inflated baseline accuracy by over 20 points.</p>
-    </div>
-    <div class="project">
-      <h3><a href="projects/ai-ethics-resume-screening.html" style="color: #222; text-decoration: underline;">Resume Screening AI: A Data Ethics Analysis</a></h3>
-      <p>A video presentation analyzing the ethics of a resume screening AI at a hypothetical talent solutions firm, examining data provenance and power imbalance risks through course frameworks from Onuoha (2016) and Kalluri (2020).</p>
-    </div>
+
   </section>
 
-  <section id="skills">
-    <h2>Skills & Tools</h2>
-    <p>Python, NumPy, pandas, matplotlib, scipy, statsmodels, sympy</p>
-  </section>
-
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:ryan24mccurry@gmail.com">ryan24mccurry@gmail.com</a></p>
