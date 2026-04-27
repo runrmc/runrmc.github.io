@@ -173,6 +173,41 @@
       margin-bottom: 4px;
     }
 
+    /* ── Deliverables ── */
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .deliverable-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid #eee;
+      text-decoration: none;
+      color: #222;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .deliverable-item:hover {
+      border-color: #aaa;
+      background-color: #fafafa;
+    }
+    .deliverable-item .deliverable-info h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .deliverable-item .deliverable-info p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+    }
+    .deliverable-item .deliverable-arrow {
+      font-size: 1rem;
+      color: #aaa;
+    }
+
     .page-end { padding-bottom: 100px; }
 
   </style>
@@ -204,6 +239,7 @@
           <li><a href="#data">The Data</a></li>
           <li><a href="#dashboard">The Dashboard</a></li>
           <li><a href="#insights">Key Insights</a></li>
+          <li><a href="#repository">Repository</a></li>
         </ol>
       </div>
     </div>
@@ -216,10 +252,6 @@
       </p>
       <p>
         The central question: how has NBA shot selection changed over the past 14 seasons, and which shooting zones are actually efficient? To answer this, I built an interactive Plotly dashboard that analyzes shot-by-shot data for the top 25 NBA scorers by points per game from 2011 to 2025. The dashboard uses four complementary chart types — each chosen for a specific analytical purpose — and lets users filter dynamically by player and season across all views simultaneously.
-      </p>
-      <p>
-        The full code and cleaned dataset are available in the
-        <a href="https://github.com/runrmc/nba-shot-analysis">public GitHub repository</a>.
       </p>
 
       <div class="project-tags" style="margin: 24px 0 6px;">
@@ -278,6 +310,9 @@
         <p>
           The scatter plot maps every shot attempt onto a half-court coordinate plane, color-coded by outcome (green for makes, red for misses). This serves as the dashboard's spatial foundation — showing where shots are taken and immediately surfacing hotspots, dead zones, and player tendencies. Scatter plots are the right choice here because both axes (x and y court coordinates) carry meaningful spatial information, and encoding shot outcome as color adds a third dimension without cluttering the view.
         </p>
+        <p>
+          Filtering by season reveals the shift in league-wide tendency over time. In the earliest seasons, shot attempts are distributed across the entire court, mid-range included. By the most recent seasons, that zone has nearly emptied out entirely — replaced by a concentrated preference for three-point attempts and shots at the rim.
+        </p>
         <iframe src="https://raw.githack.com/runrmc/nba-shot-analysis/main/exports/scatter_plot.html"
           width="100%" height="620" style="border:none; border-radius:4px;">
         </iframe>
@@ -313,11 +348,11 @@
         </p>
         <iframe src="https://raw.githack.com/runrmc/nba-shot-analysis/main/exports/stacked_bar.html"
           width="100%" height="620" style="border:none; border-radius:4px;"></iframe>
-        </div>
+      </div>
     </section>
 
     <!-- 4. Key Insights -->
-    <section class="project-section page-end" id="insights">
+    <section class="project-section" id="insights">
       <h2>Key Insights</h2>
       <ul class="insight-list">
         <li>
@@ -333,6 +368,20 @@
           Filtering the scatter plot to individual players reveals markedly different shot profiles — some clustering near the rim with minimal mid-range activity, others with dense three-point zones and nearly empty paint areas. These spatial signatures map directly to the efficiency data in the histogram.
         </li>
       </ul>
+    </section>
+
+    <!-- 5. Repository -->
+    <section class="project-section page-end" id="repository">
+      <h2>Repository</h2>
+      <div class="deliverables">
+        <a class="deliverable-item" href="https://github.com/runrmc/nba-shot-analysis" target="_blank">
+          <div class="deliverable-info">
+            <h4>nba-shot-analysis</h4>
+            <p>Cleaned notebook, exported visualizations, and data README — public GitHub repository</p>
+          </div>
+          <span class="deliverable-arrow">↗</span>
+        </a>
+      </div>
     </section>
 
   </div>
