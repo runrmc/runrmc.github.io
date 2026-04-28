@@ -294,7 +294,7 @@
         <span class="viz-label">Scatter Plot &nbsp;·&nbsp; Basic Technique</span>
         <h3>1. Heart Rate Progression Throughout a Run</h3>
         <p>
-          The first visualization plots heart rate against elapsed time for an individual running session, with each point colored by pace. This surfaces two questions simultaneously: does heart rate increase over time due to fatigue (cardiovascular drift), and can pace changes explain sudden spikes in heart rate? A scatter plot is the right choice here because both axes carry meaningful continuous values, and encoding pace as a color gradient adds a third variable without cluttering the view. An interactive dropdown lets the client select any running session and compare patterns across workouts.
+          The first visualization plots heart rate against elapsed time for an individual running session, with each point colored by pace. This surfaces two questions simultaneously: does heart rate increase over time due to fatigue (cardiovascular drift), and can pace changes explain sudden spikes in heart rate? A scatter plot is the right choice here because both axes carry meaningful continuous values, and encoding pace as a color gradient adds a third variable without cluttering the view. In the original notebook, a session dropdown allowed the client to compare patterns across all runs; the chart below shows a representative single session.
         </p>
         <img src="../assets/img/fitness-scatter.png" class="screenshot" alt="Heart rate progression scatter plot — red points indicate faster pace, green points indicate slower pace" />
       </div>
@@ -304,7 +304,7 @@
         <span class="viz-label">Multi-Axis Line Chart &nbsp;·&nbsp; Basic Technique</span>
         <h3>2. Multi-Variable Performance Analysis Over Time</h3>
         <p>
-          The scatter plot raised a follow-up question: if pace alone doesn't fully explain heart rate variation, what else does? This visualization overlays heart rate, pace, and elevation on a shared timeline using three independent y-axes, with smoothed trend lines for each. An annotated correlation box quantifies the relationship between each variable pair for the selected session. Line charts are optimal for this because the data is time-ordered and the story is about how these metrics move together — or don't. The same session dropdown from Visualization 1 carries forward, keeping the client's focus on the same run across both views.
+          The scatter plot raised a follow-up question: if pace alone doesn't fully explain heart rate variation, what else does? This visualization overlays heart rate, pace, and elevation on a shared timeline using three independent y-axes, with smoothed trend lines for each. An annotated correlation box quantifies the relationship between each variable pair for the selected session. Line charts are optimal for this because the data is time-ordered and the story is about how these metrics move together — or don't.
         </p>
         <img src="../assets/img/fitness-multiaxis.png" class="screenshot" alt="Multi-axis time series showing heart rate, pace, and elevation over a single run" />
       </div>
@@ -324,7 +324,7 @@
         <span class="viz-label">Interactive Geospatial Map &nbsp;·&nbsp; Advanced Technique</span>
         <h3>4. GPS Route Map with Color-Coded Performance Metrics</h3>
         <p>
-          The box plot revealed that correlations between heart rate, pace, and elevation were surprisingly weak on average — but with wide variability. The geographic map was built to explain why. Using Folium, all 64 sessions are plotted as GPS coordinate sequences, with each point colored by the user's choice of metric: heart rate, pace, or elevation. Start and end markers anchor each route, hover tooltips surface per-point stats, and a color gradient legend provides a reference scale. This is the most technically complex visualization in the analysis — combining geospatial rendering, interactive controls, and performance metric encoding in a single view — and it directly answers the question the prior three charts couldn't: the terrain is what's driving the variability.
+          The box plot revealed that correlations between heart rate, pace, and elevation were surprisingly weak on average — but with wide variability. The geographic map was built to explain why. Using Folium, all 64 sessions are plotted as GPS coordinate sequences, with each point colored by performance metric: heart rate, pace, or elevation. Start and end markers anchor each route, hover tooltips surface per-point stats, and a color gradient legend provides a reference scale. This is the most technically complex visualization in the analysis — combining geospatial rendering, interactive controls, and performance metric encoding in a single view — and it directly answers the question the prior three charts couldn't: the terrain is what's driving the variability. The chart below shows a single representative route colored by heart rate; in the original notebook, both the session and the metric were user-selectable.
         </p>
         <img src="../assets/img/fitness-map.png" class="screenshot" alt="GPS route map with points color-coded by heart rate, showing a single running session" />
       </div>
