@@ -106,37 +106,41 @@
       margin-top: 4px;
     }
 
-    /* ── Screenshot placeholder ── */
-    .screenshot-placeholder {
-      background: #f7f7f7;
-      border: 1px solid #eee;
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 24px;
-      margin: 24px 0;
-      text-align: center;
-      gap: 10px;
-    }
-    .screenshot-placeholder .ph-icon {
-      font-size: 2rem;
-      opacity: 0.3;
-    }
-    .screenshot-placeholder .ph-label {
-      font-size: 0.85rem;
-      color: #aaa;
-      font-family: 'Georgia', serif;
-    }
-
-    /* ── Screenshot (real image, once added) ── */
+    /* ── Screenshot (real image) ── */
     .screenshot {
       width: 100%;
       border: 1px solid #eee;
       border-radius: 4px;
       display: block;
       margin: 24px 0;
+    }
+
+    /* ── Synthetic data notice ── */
+    .synthetic-notice {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fafafa;
+      border: 1px solid #e8e8e8;
+      border-left: 3px solid #bbb;
+      border-radius: 4px;
+      padding: 14px 18px;
+      margin: 0 0 32px;
+    }
+    .synthetic-notice .notice-icon {
+      font-size: 1rem;
+      line-height: 1.6;
+      flex-shrink: 0;
+      color: #999;
+    }
+    .synthetic-notice p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .synthetic-notice p strong {
+      color: #555;
     }
 
     /* ── Viz blocks ── */
@@ -280,6 +284,11 @@
         Each visualization was chosen to answer a specific question raised by the previous one. The analysis builds progressively — from understanding what happens within a single run, to comparing patterns across all runs, to understanding why those patterns vary.
       </p>
 
+      <div class="synthetic-notice">
+        <span class="notice-icon">ℹ</span>
+        <p><strong>Note on charts below:</strong> The original dataset is personal client data and cannot be shared publicly. The charts shown here are reproductions of the same visualization types using synthetic data generated to reflect realistic GPS fitness patterns — same structure, same techniques, same findings. The actual analysis was conducted on the full 64-session dataset.</p>
+      </div>
+
       <!-- Viz 1 -->
       <div class="viz-block">
         <span class="viz-label">Scatter Plot &nbsp;·&nbsp; Basic Technique</span>
@@ -287,10 +296,7 @@
         <p>
           The first visualization plots heart rate against elapsed time for an individual running session, with each point colored by pace. This surfaces two questions simultaneously: does heart rate increase over time due to fatigue (cardiovascular drift), and can pace changes explain sudden spikes in heart rate? A scatter plot is the right choice here because both axes carry meaningful continuous values, and encoding pace as a color gradient adds a third variable without cluttering the view. An interactive dropdown lets the client select any running session and compare patterns across workouts.
         </p>
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">📸</span>
-          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-scatter.png" class="screenshot" alt="Heart rate progression scatter plot" /&gt;</code></span>
-        </div>
+        <img src="../assets/img/fitness-scatter.png" class="screenshot" alt="Heart rate progression scatter plot — red points indicate faster pace, green points indicate slower pace" />
       </div>
 
       <!-- Viz 2 -->
@@ -300,10 +306,7 @@
         <p>
           The scatter plot raised a follow-up question: if pace alone doesn't fully explain heart rate variation, what else does? This visualization overlays heart rate, pace, and elevation on a shared timeline using three independent y-axes, with smoothed trend lines for each. An annotated correlation box quantifies the relationship between each variable pair for the selected session. Line charts are optimal for this because the data is time-ordered and the story is about how these metrics move together — or don't. The same session dropdown from Visualization 1 carries forward, keeping the client's focus on the same run across both views.
         </p>
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">📸</span>
-          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-multiaxis.png" class="screenshot" alt="Multi-axis time series line chart" /&gt;</code></span>
-        </div>
+        <img src="../assets/img/fitness-multiaxis.png" class="screenshot" alt="Multi-axis time series showing heart rate, pace, and elevation over a single run" />
       </div>
 
       <!-- Viz 3 -->
@@ -313,10 +316,7 @@
         <p>
           Visualizations 1 and 2 showed that variable relationships differed session to session. This raised a natural question: how consistent are these relationships across all runs? A box plot of correlation coefficients — one box per variable pair — shows both the central tendency and spread of each relationship across all running sessions. Box plots are well-suited here because the goal is to compare distributions across categories, and the median, quartiles, and outliers all carry meaningful information. Mean values are overlaid as diamond markers to distinguish average from median where the distribution is skewed.
         </p>
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">📸</span>
-          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-boxplot.png" class="screenshot" alt="Correlation distribution box plot" /&gt;</code></span>
-        </div>
+        <img src="../assets/img/fitness-boxplot.png" class="screenshot" alt="Box plot showing distribution of Pearson correlations between heart rate, pace, and elevation across all running sessions" />
       </div>
 
       <!-- Viz 4 -->
@@ -326,10 +326,7 @@
         <p>
           The box plot revealed that correlations between heart rate, pace, and elevation were surprisingly weak on average — but with wide variability. The geographic map was built to explain why. Using Folium, all 64 sessions are plotted as GPS coordinate sequences, with each point colored by the user's choice of metric: heart rate, pace, or elevation. Start and end markers anchor each route, hover tooltips surface per-point stats, and a color gradient legend provides a reference scale. This is the most technically complex visualization in the analysis — combining geospatial rendering, interactive controls, and performance metric encoding in a single view — and it directly answers the question the prior three charts couldn't: the terrain is what's driving the variability.
         </p>
-        <div class="screenshot-placeholder">
-          <span class="ph-icon">📸</span>
-          <span class="ph-label">Screenshot coming — capture from your notebook and replace this block with:<br><code>&lt;img src="../assets/img/fitness-map.png" class="screenshot" alt="Interactive GPS route map" /&gt;</code></span>
-        </div>
+        <img src="../assets/img/fitness-map.png" class="screenshot" alt="GPS route map with points color-coded by heart rate, showing a single running session" />
       </div>
     </section>
 
