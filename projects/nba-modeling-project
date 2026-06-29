@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bang for the Buck: NBA Salary Efficiency | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    .github-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .github-link:hover { color: #222; border-color: #aaa; }
+
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .report-block {
+      border: 1px solid #eee;
+      padding: 24px;
+      margin-top: 20px;
+    }
+    .report-block p {
+      margin-bottom: 16px;
+    }
+    .report-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #222;
+      text-decoration: none;
+      border-bottom: 1px solid #222;
+      padding-bottom: 2px;
+    }
+    .report-link:hover { color: #555; border-color: #555; }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">Home</a></li>
+      <li><a href="../index.html#projects">Projects &amp; Coursework</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Bang for the Buck: Modeling NBA Player Performance to Contract Value</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 20px;">
+      SIADS Milestone I &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp; Spring/Summer 2026 &nbsp;·&nbsp; Ryan McCurry, Yuki Kodama, and Quentinn Roby
+    </p>
+
+    <a href="https://github.com/runrmc/nba-salary-efficiency" class="github-link" target="_blank">View on GitHub →</a>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#takeaways">Main Takeaways</a></li>
+          <li><a href="#report">Full Report</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Do NBA teams win because they spend more, or because they spend more efficiently? This project builds a data-driven framework for evaluating whether NBA player salaries reflect on-court production — something that gets debated constantly but rarely measured systematically.
+      </p>
+      <p>
+        Working with a decade of player-season data (2016–17 through 2025–26), we modeled expected salary as a percentage of the salary cap using performance metrics, then used the gap between predicted and actual pay to identify over- and undervalued players. We also examined whether younger players are systematically underpaid and whether contract timing shapes how players perform.
+      </p>
+      <p>
+        The project spans the full data science pipeline: two custom data pipelines pulling from the NBA API and Basketball Reference, a joining and cleaning process across 2,973 player-seasons, OLS regression modeling, and a series of visualizations that translate the findings into a clear, interpretable story.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">pandas</span>
+        <span class="tag">statsmodels</span>
+        <span class="tag">nba_api</span>
+        <span class="tag">BeautifulSoup</span>
+        <span class="tag">matplotlib</span>
+        <span class="tag">OLS Regression</span>
+        <span class="tag">Web Scraping</span>
+        <span class="tag">Data Pipeline</span>
+        <span class="tag">Statistical Testing</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">2,973</div>
+          <div class="label">Player-seasons in the analytical sample</div>
+        </div>
+        <div class="stat">
+          <div class="number">10</div>
+          <div class="label">NBA seasons covered (2016–2026)</div>
+        </div>
+        <div class="stat">
+          <div class="number">0.60</div>
+          <div class="label">Model R² — performance explains ~60% of salary variance</div>
+        </div>
+        <div class="stat">
+          <div class="number">3</div>
+          <div class="label">Research questions examined</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Main Takeaways -->
+    <section class="project-section" id="takeaways">
+      <h2>Main Takeaways</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Volume stats drive salary more than efficiency.</strong>
+          Field goals made per game, minutes, and usage rate were the strongest predictors of salary cap percentage — outpacing efficiency metrics like PIE and true shooting percentage. The market rewards scoring involvement more heavily than overall impact.
+        </li>
+        <li>
+          <strong>The model identifies clear over- and undervalued players.</strong>
+          Ben Simmons appeared twice among the most overpaid player-seasons (+19.69% in 2022–23, +20.51% in 2024–25). On the other end, Pascal Siakam (2019–20) and Desmond Bane (2023–24) rank among the most underpaid — not because of market inefficiency, but because rookie contract ceilings limit pay regardless of performance.
+        </li>
+        <li>
+          <strong>Contract years don't produce a broad performance boost.</strong>
+          Across four key metrics, only true shooting percentage showed a statistically significant change in contract years (p = 0.004, +1.19%). Players appear to prioritize shot quality over volume in the year before signing — but the overall evidence for a contract year effect is weak.
+        </li>
+        <li>
+          <strong>Younger players are structurally underpaid.</strong>
+          Players aged 19–22 post a performance index of 0.91 relative to league average but a salary index of just 0.41 — producing near league-average impact while earning less than half the league-average pay share. This gap is driven by the NBA's rookie salary scale, not by market mispricing.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 3. Full Report -->
+    <section class="project-section page-end" id="report">
+      <h2>Full Report</h2>
+      <div class="report-block">
+        <p>
+          The full written report covers our data sources, pipeline design, modeling approach, results, ethical considerations, and directions for further research.
+        </p>
+        <a href="../assets/nba_modeling_project_report.pdf" class="report-link" target="_blank">Download Report (PDF) →</a>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
