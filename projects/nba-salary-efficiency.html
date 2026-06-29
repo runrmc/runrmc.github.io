@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,24 +129,6 @@
       margin-bottom: 4px;
     }
 
-    .report-block {
-      border: 1px solid #eee;
-      padding: 24px;
-      margin-top: 20px;
-    }
-    .report-block p {
-      margin-bottom: 16px;
-    }
-    .report-link {
-      display: inline-block;
-      font-size: 0.9rem;
-      color: #222;
-      text-decoration: none;
-      border-bottom: 1px solid #222;
-      padding-bottom: 2px;
-    }
-    .report-link:hover { color: #555; border-color: #555; }
-
     .page-end { padding-bottom: 100px; }
 
   </style>
@@ -178,7 +161,7 @@
         <ol>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#takeaways">Main Takeaways</a></li>
-          <li><a href="#report">Full Report</a></li>
+          <li><a href="#deliverables">Deliverables</a></li>
         </ol>
       </div>
     </div>
@@ -253,14 +236,24 @@
       </ul>
     </section>
 
-    <!-- 3. Full Report -->
-    <section class="project-section page-end" id="report">
-      <h2>Full Report</h2>
-      <div class="report-block">
-        <p>
-          The full written report covers our data sources, pipeline design, modeling approach, results, ethical considerations, and directions for further research.
-        </p>
-        <a href="../assets/files/nba_modeling_project_report.pdf" class="report-link" target="_blank">Download Report (PDF) →</a>
+    <!-- 3. Deliverables -->
+    <section class="project-section page-end" id="deliverables">
+      <h2>Deliverables</h2>
+      <div class="deliverables">
+        <a class="deliverable-item" href="../assets/files/nba_modeling_project_report.pdf" target="_blank">
+          <div class="deliverable-info">
+            <h4>Full Report</h4>
+            <p>Complete written report covering data sources, pipeline design, modeling approach, results, ethical considerations, and further research — PDF download</p>
+          </div>
+          <span class="deliverable-arrow">↓</span>
+        </a>
+        <a class="deliverable-item" href="https://github.com/runrmc/nba-salary-efficiency" target="_blank">
+          <div class="deliverable-info">
+            <h4>GitHub Repository</h4>
+            <p>Full project code including data pipelines, notebooks, and visualizations</p>
+          </div>
+          <span class="deliverable-arrow">→</span>
+        </a>
       </div>
     </section>
 
@@ -268,3 +261,4 @@
 
 </body>
 </html>
+```
