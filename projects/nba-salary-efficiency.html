@@ -203,24 +203,51 @@
     <!-- 2. Main Takeaways -->
     <section class="project-section" id="takeaways">
       <h2>Main Takeaways</h2>
-      <ul class="insight-list">
-        <li>
-          <strong>Volume stats drive salary more than efficiency.</strong>
-          Field goals made per game, minutes, and usage rate were the strongest predictors of salary cap percentage — outpacing efficiency metrics like PIE and true shooting percentage. The market rewards scoring involvement more heavily than overall impact.
-        </li>
-        <li>
-          <strong>The model identifies clear over- and undervalued players.</strong>
-          Ben Simmons appeared twice among the most overpaid player-seasons (+19.69% in 2022–23, +20.51% in 2024–25). On the other end, Pascal Siakam (2019–20) and Desmond Bane (2023–24) rank among the most underpaid — not because of market inefficiency, but because rookie contract ceilings limit pay regardless of performance.
-        </li>
-        <li>
-          <strong>Contract years don't produce a broad performance boost.</strong>
-          Across four key metrics, only true shooting percentage showed a statistically significant change in contract years (p = 0.004, +1.19%). Players appear to prioritize shot quality over volume in the year before signing — but the overall evidence for a contract year effect is weak.
-        </li>
-        <li>
-          <strong>Younger players are structurally underpaid.</strong>
-          Players aged 19–22 post a performance index of 0.91 relative to league average but a salary index of just 0.41 — producing near league-average impact while earning less than half the league-average pay share. This gap is driven by the NBA's rookie salary scale, not by market mispricing.
-        </li>
-      </ul>
+
+      <div class="viz-block">
+        <ul class="insight-list">
+          <li>
+            <strong>Volume stats drive salary more than efficiency.</strong>
+            Field goals made per game, minutes, and usage rate were the strongest predictors of salary cap percentage — outpacing efficiency metrics like PIE and true shooting percentage. The market rewards scoring involvement more heavily than overall impact.
+          </li>
+        </ul>
+        <span class="viz-label">Correlation Heatmap &nbsp;·&nbsp; Salary &amp; Player Metrics</span>
+        <img src="../assets/img/03_correlation_heatmap.png" class="screenshot" alt="Correlation heatmap showing relationships between player performance metrics and salary cap percentage" />
+      </div>
+
+      <div class="viz-block">
+        <ul class="insight-list">
+          <li>
+            <strong>The model identifies clear over- and undervalued players.</strong>
+            Ben Simmons appeared twice among the most overpaid player-seasons (+19.69% in 2022–23, +20.51% in 2024–25). On the other end, Pascal Siakam (2019–20) and Desmond Bane (2023–24) rank among the most underpaid — not because of market inefficiency, but because rookie contract ceilings limit pay regardless of performance.
+          </li>
+        </ul>
+        <span class="viz-label">Residuals &nbsp;·&nbsp; Largest Salary Gaps from Model Prediction</span>
+        <img src="../assets/img/09_top_salary_residuals.png" class="screenshot" alt="Bar chart showing players with the largest positive and negative salary residuals from the OLS model" />
+      </div>
+
+      <div class="viz-block">
+        <ul class="insight-list">
+          <li>
+            <strong>Younger players are structurally underpaid.</strong>
+            Players aged 19–22 post a performance index of 0.91 relative to league average but a salary index of just 0.41 — producing near league-average impact while earning less than half the league-average pay share. This gap is driven by the NBA's rookie salary scale, not by market mispricing.
+          </li>
+        </ul>
+        <span class="viz-label">Age Group Analysis &nbsp;·&nbsp; Production vs. Pay Indexed to League Average</span>
+        <img src="../assets/img/13_age_group_pie_vs_salary_index.png" class="screenshot" alt="Grouped bar chart comparing PIE index and salary cap percentage index by age group" />
+      </div>
+
+      <div class="viz-block">
+        <ul class="insight-list">
+          <li>
+            <strong>Contract years don't produce a broad performance boost.</strong>
+            Across four key metrics, only true shooting percentage showed a statistically significant change in contract years (p = 0.004, +1.19%). Players appear to prioritize shot quality over volume in the year before signing — but the overall evidence for a contract year effect is weak.
+          </li>
+        </ul>
+        <span class="viz-label">Contract Year Effect &nbsp;·&nbsp; Percent Change in Performance Metrics</span>
+        <img src="../assets/img/15_contract_year_pct_diff.png" class="screenshot" alt="Bar chart showing percent change in PIE, TS%, FGM/G, and USG% in contract years vs. non-contract years" />
+      </div>
+
     </section>
 
     <!-- 3. Deliverables -->
