@@ -120,6 +120,21 @@
       margin: 24px 0;
     }
 
+    /* ── CTA button ── */
+    .cta-button {
+      display: inline-block;
+      margin: 4px 0 24px;
+      padding: 12px 24px;
+      border: 1px solid #222;
+      border-radius: 4px;
+      color: #222;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-family: 'Georgia', serif;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .cta-button:hover { background: #222; color: #fff; }
+
     /* ── Results table ── */
     .results-table {
       width: 100%;
@@ -331,9 +346,7 @@
         An interactive Streamlit dashboard lets you explore the project's results without running the notebook: toggle between the standard and value-weighted models to compare ROC-AUC, recall, and precision; view feature importance and RFM distributions by churn status; and look up any customer by ID to see their RFM profile alongside a live churn prediction and their actual historical outcome.
       </p>
       <img class="screenshot" src="https://raw.githubusercontent.com/runrmc/retail-churn-prediction/main/reports/streamlit_demo.gif" alt="Retail churn prediction Streamlit dashboard demo" />
-      <p style="font-size: 0.85rem; color: #777; margin-top: -8px;">
-        Runs locally via <code>streamlit run app/dashboard.py</code> after training the models — see the repository README for setup.
-      </p>
+      <a class="cta-button" href="https://retail-churn-prediction-b8jqdhw9eprjqtjtcqv2us.streamlit.app/" target="_blank">Launch the live dashboard ↗</a>
     </section>
 
     <!-- 5. Repository -->
