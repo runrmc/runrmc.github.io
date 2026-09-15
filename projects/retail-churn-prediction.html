@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retail Churn Prediction | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC ── */
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Sections ── */
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    /* ── Stat blocks ── */
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ── Screenshot / demo ── */
+    .screenshot {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: block;
+      margin: 24px 0;
+    }
+
+    /* ── Results table ── */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 24px;
+      font-size: 0.9rem;
+    }
+    .results-table th, .results-table td {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid #eee;
+    }
+    .results-table th {
+      color: #777;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: normal;
+    }
+    .results-table td { color: #333; }
+    .results-table td.highlight { font-weight: bold; color: #222; }
+
+    /* ── Insight callout ── */
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    /* ── Deliverables ── */
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .deliverable-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid #eee;
+      text-decoration: none;
+      color: #222;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .deliverable-item:hover {
+      border-color: #aaa;
+      background-color: #fafafa;
+    }
+    .deliverable-item .deliverable-info h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .deliverable-item .deliverable-info p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+    }
+    .deliverable-item .deliverable-arrow {
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">Home</a></li>
+      <li><a href="../index.html#projects">Projects &amp; Coursework</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Retail Customer Churn Prediction</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      Independent Project &nbsp;·&nbsp; Python, XGBoost &amp; Streamlit &nbsp;·&nbsp; 2026
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#labeling">The Churn Labeling Problem</a></li>
+          <li><a href="#modeling">Modeling &amp; Results</a></li>
+          <li><a href="#dashboard">The Dashboard</a></li>
+          <li><a href="#repository">Repository</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Project Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Customer retention is far cheaper than acquisition, but knowing who's actually at risk of leaving is non-trivial when a business has no explicit "churned" flag in its data. This project builds a full pipeline — from raw transactions to a deployable churn model and interactive dashboard — to identify at-risk customers and quantify the revenue tied to them.
+      </p>
+      <p>
+        The dataset is the UCI Online Retail II dataset: roughly 1.07 million transactions from a UK-based online gift retailer between December 2009 and December 2011, covering about 5,900 customers. It was deliberately chosen without a pre-built churn label, requiring the label itself to be engineered — a closer analog to real-world business problems than most tutorial datasets.
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">Python</span>
+        <span class="tag">pandas</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag">Feature Engineering (RFM)</span>
+        <span class="tag">Grid Search CV</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Business Impact Analysis</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">1.07M</div>
+          <div class="label">Transactions analyzed (~5,900 customers)</div>
+        </div>
+        <div class="stat">
+          <div class="number">180-day</div>
+          <div class="label">Churn window, selected from observed purchase cycle</div>
+        </div>
+        <div class="stat">
+          <div class="number">0.806</div>
+          <div class="label">ROC-AUC, tuned XGBoost</div>
+        </div>
+        <div class="stat">
+          <div class="number">57.6%</div>
+          <div class="label">Revenue at risk captured, value-weighted model</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. The Churn Labeling Problem -->
+    <section class="project-section" id="labeling">
+      <h2>The Churn Labeling Problem</h2>
+      <p>
+        Roughly 243K rows missing a Customer ID were dropped during cleaning, and cancelled orders were split from purchases to preserve return behavior as a feature rather than discarding it. With no explicit churn flag, the label itself had to be engineered: I tested both 90-day and 180-day windows against a fixed reference date, and selected 180 days based on the dataset's observed ~180-day median purchase cycle — the 90-day window over-flagged normal infrequent buyers as "churned."
+      </p>
+      <p>
+        Features were built around RFM (recency, frequency, monetary) plus return rate, computed strictly on pre-reference-date data to avoid leakage. Pipeline logic was later refactored out of the notebook into reusable, type-hinted <code>src/</code> modules, each independently runnable and testable.
+      </p>
+    </section>
+
+    <!-- 3. Modeling & Results -->
+    <section class="project-section" id="modeling">
+      <h2>Modeling &amp; Results</h2>
+      <p>
+        A logistic regression baseline was followed by XGBoost, tuned via 5-fold grid search after an untuned version initially underperformed the baseline. Evaluation combined standard ML metrics (ROC-AUC, precision/recall) with a business-facing "revenue at risk" metric — since count-based recall alone doesn't capture which churners actually matter to the business.
+      </p>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Logistic Regression</th>
+            <th>XGBoost (tuned)</th>
+            <th>XGBoost (value-weighted)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ROC-AUC</td><td>0.791</td><td class="highlight">0.806</td><td>0.799</td></tr>
+          <tr><td>Recall (churned)</td><td>0.68</td><td class="highlight">0.77</td><td>0.75</td></tr>
+          <tr><td>Precision (churned)</td><td>0.70</td><td>0.69</td><td>0.70</td></tr>
+          <tr><td>Revenue captured</td><td>—</td><td>49.9%</td><td class="highlight">57.6%</td></tr>
+        </tbody>
+      </table>
+      <ul class="insight-list">
+        <li>
+          <strong>Frequency, not recency, was the strongest churn predictor.</strong>
+          Frequency (0.47 importance) outranked recency (0.28) and monetary value (0.23) — despite recency showing the most visually obvious relationship with churn during EDA.
+        </li>
+        <li>
+          <strong>The model systematically underperforms on high-value accounts.</strong>
+          While the tuned model catches 77% of churners by count, it captures only 49.9% of the associated revenue. Missed churners average $2,163 in historical spend — over 3x the $649 average of correctly identified churners.
+        </li>
+        <li>
+          <strong>Reweighting the training objective closed part of that gap.</strong>
+          Retraining XGBoost using monetary value as a sample weight improved revenue capture to 57.6% (+7.7 points), at a small cost to recall (0.77 → 0.75) and ROC-AUC (0.806 → 0.799) — confirming the gap was partly a training-objective issue, not purely a feature limitation. Model choice ultimately depends on whether the business cares more about reaching customers by count or protecting revenue.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. The Dashboard -->
+    <section class="project-section" id="dashboard">
+      <h2>The Dashboard</h2>
+      <p>
+        An interactive Streamlit dashboard lets you explore the project's results without running the notebook: toggle between the standard and value-weighted models to compare ROC-AUC, recall, and precision; view feature importance and RFM distributions by churn status; and look up any customer by ID to see their RFM profile alongside a live churn prediction and their actual historical outcome.
+      </p>
+      <img class="screenshot" src="https://raw.githubusercontent.com/runrmc/retail-churn-prediction/main/reports/streamlit_demo.gif" alt="Retail churn prediction Streamlit dashboard demo" />
+      <p style="font-size: 0.85rem; color: #777; margin-top: -8px;">
+        Runs locally via <code>streamlit run app/dashboard.py</code> after training the models — see the repository README for setup.
+      </p>
+    </section>
+
+    <!-- 5. Repository -->
+    <section class="project-section page-end" id="repository">
+      <h2>Repository</h2>
+      <div class="deliverables">
+        <a class="deliverable-item" href="https://github.com/runrmc/retail-churn-prediction" target="_blank">
+          <div class="deliverable-info">
+            <h4>retail-churn-prediction</h4>
+            <p>Full pipeline notebook, reusable src/ modules, and Streamlit dashboard — public GitHub repository</p>
+          </div>
+          <span class="deliverable-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
