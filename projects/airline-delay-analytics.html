@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Airline Delay Analytics | Ryan McCurry</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 30px;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover { color: #222; }
+    .back-link::before { content: '← '; }
+
+    /* ── TOC ── */
+    .toc { margin: 30px 0 0; }
+    .toc-inner {
+      border: 1px solid #eee;
+      padding: 20px 24px;
+    }
+    .toc-inner p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .toc-inner ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .toc-inner ol li { margin-bottom: 6px; }
+    .toc-inner ol li a {
+      font-size: 0.92rem;
+      color: #555;
+      text-decoration: none;
+    }
+    .toc-inner ol li a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+
+    /* ── Tags ── */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: #555;
+      border: 1px solid #ddd;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Sections ── */
+    .project-section { padding: 60px 0 10px; }
+    .project-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .project-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .project-section p {
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .project-section ul {
+      padding-left: 20px;
+      color: #444;
+    }
+    .project-section ul li { margin-bottom: 10px; }
+
+    /* ── Stat blocks ── */
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      border-left: 2px solid #222;
+      padding-left: 14px;
+    }
+    .stat .number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.2;
+    }
+    .stat .label {
+      font-size: 0.82rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* ── Screenshot ── */
+    .screenshot {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      display: block;
+      margin: 24px 0;
+    }
+
+    /* ── CTA button ── */
+    .cta-button {
+      display: inline-block;
+      margin: 4px 0 24px;
+      padding: 12px 24px;
+      border: 1px solid #222;
+      border-radius: 4px;
+      color: #222;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-family: 'Georgia', serif;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .cta-button:hover { background: #222; color: #fff; }
+
+    /* ── Code block ── */
+    .code-block {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #333;
+      margin: 16px 0 24px;
+      overflow-x: auto;
+    }
+
+    /* ── Insight callout ── */
+    .insight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .insight-list li {
+      padding: 16px 20px;
+      border-left: 2px solid #222;
+      margin-bottom: 14px;
+      background: #fafafa;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .insight-list li strong {
+      display: block;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    /* ── Deliverables ── */
+    .deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .deliverable-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid #eee;
+      text-decoration: none;
+      color: #222;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .deliverable-item:hover {
+      border-color: #aaa;
+      background-color: #fafafa;
+    }
+    .deliverable-item .deliverable-info h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .deliverable-item .deliverable-info p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+    }
+    .deliverable-item .deliverable-arrow {
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    .page-end { padding-bottom: 100px; }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ryan McCurry</span>
+    <ul>
+      <li><a href="../index.html#about">Home</a></li>
+      <li><a href="../index.html#projects">Projects &amp; Coursework</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 80px 20px 0;">
+
+    <a href="../index.html#projects" class="back-link">Back to Projects</a>
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">2025 U.S. Flight Delay &amp; Reliability Analysis</h1>
+    <p style="font-size: 1rem; color: #777; font-style: italic; margin-bottom: 30px;">
+      Independent Project &nbsp;·&nbsp; SQL, PostgreSQL &amp; Tableau &nbsp;·&nbsp; 2026
+    </p>
+
+    <div class="toc">
+      <div class="toc-inner">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#architecture">Data &amp; Architecture</a></li>
+          <li><a href="#findings">Key Findings</a></li>
+          <li><a href="#dashboard">The Dashboard</a></li>
+          <li><a href="#repository">Repository</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 1. Project Overview -->
+    <section class="project-section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        Flight reliability is a core operational metric for airlines, and a key input for any travel-industry product that ranks, recommends, or predicts flight outcomes — think Expedia, Google Flights, or an airline's own ops team. This project asks a simple question with a data-heavy answer: which carriers and routes are actually reliable, what's really driving delays, and when should travelers expect the worst disruptions?
+      </p>
+      <p>
+        I built a SQL + Tableau analytics pipeline examining on-time performance, delay root causes, and reliability patterns across roughly 7 million U.S. domestic flights from the full 2025 calendar year, sourced from the U.S. Department of Transportation's Bureau of Transportation Statistics (BTS).
+      </p>
+
+      <div class="project-tags" style="margin: 24px 0 6px;">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Window Functions</span>
+        <span class="tag">CTEs</span>
+        <span class="tag">Star Schema Design</span>
+        <span class="tag">Python / pandas</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Data Visualization</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #999; margin-top: 6px; margin-bottom: 0;">Skills demonstrated in this project</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="number">7.0M</div>
+          <div class="label">Domestic flights analyzed (2025)</div>
+        </div>
+        <div class="stat">
+          <div class="number">14</div>
+          <div class="label">Carriers &nbsp;/&nbsp; 352 airports</div>
+        </div>
+        <div class="stat">
+          <div class="number">71%</div>
+          <div class="label">Delay-minutes from late aircraft &amp; carrier-controllable causes</div>
+        </div>
+        <div class="stat">
+          <div class="number">73–83%</div>
+          <div class="label">Carrier on-time rate range</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Data & Architecture -->
+    <section class="project-section" id="architecture">
+      <h2>Data &amp; Architecture</h2>
+      <p>
+        Raw monthly CSVs from BTS were cleaned with Python and pandas — trimmed from 110 columns down to 39 relevant fields, with nulls handled by business logic rather than blanket imputation — then bulk-loaded into PostgreSQL via the native <code>COPY</code> command for performance at scale.
+      </p>
+      <p>
+        The warehouse is modeled as a star schema: <code>dim_date</code> (one row per calendar day), <code>dim_airport</code> (referenced twice by the fact table, for origin and destination), <code>dim_carrier</code> (one row per airline), and <code>fact_flights</code> — roughly 7 million rows carrying foreign keys to all three dimensions plus departure/arrival performance, delay-cause breakdown, and cancellation/diversion flags.
+      </p>
+      <p>
+        Seven analytical SQL queries sit on top of this schema — a carrier scorecard, delay-cause breakdown, monthly and day-of-week trend analysis, route-level reliability, a carrier ranking, and a month-over-month change calculation. A few techniques stood out:
+      </p>
+      <ul>
+        <li>Aggregations with conditional logic (<code>CASE WHEN</code> inside <code>SUM</code>) to compute on-time %, cancellation %, and delay-cause share</li>
+        <li>A CTE combined with the <code>LAG()</code> window function to compute month-over-month change in on-time performance</li>
+        <li><code>RANK()</code> for carrier reliability ranking</li>
+        <li>A "role-playing dimension" join pattern — <code>dim_airport</code> joined twice in the same query, aliased as origin and destination</li>
+      </ul>
+    </section>
+
+    <!-- 3. Key Findings -->
+    <section class="project-section" id="findings">
+      <h2>Key Findings</h2>
+      <ul class="insight-list">
+        <li>
+          <strong>Late aircraft and carrier-controllable issues, not weather, drive most delays.</strong>
+          Late aircraft delay (39%) and carrier delay (32%) together account for over 70% of total delay-minutes; weather is only about 6%.
+        </li>
+        <li>
+          <strong>Carrier reliability varies meaningfully.</strong>
+          On-time rates range from roughly 73% to 83%, even after controlling for cancellations.
+        </li>
+        <li>
+          <strong>Summer, not winter, is the worst season for delays.</strong>
+          July is the single worst month — 70.8% on-time, 17.3 minute average delay — likely driven by high travel volume combined with afternoon thunderstorm season. Airlines appear to schedule more buffer in winter months in anticipation of weather.
+        </li>
+        <li>
+          <strong>Sunday and Monday are the least reliable days of the week</strong> — likely from weekend-disruption carryover, not Thursday or Friday as commonly assumed.
+        </li>
+        <li>
+          <strong>Route-level reliability reveals outliers invisible at the carrier level.</strong>
+          Some individual routes run below 40% on-time despite their operating carrier's overall average being much higher.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. The Dashboard -->
+    <section class="project-section" id="dashboard">
+      <h2>The Dashboard</h2>
+      <p>
+        Query outputs and the full star-schema tables were exported to CSV and built out into an interactive Tableau Public dashboard for exploring carrier scorecards, delay-cause breakdowns, and route-level reliability.
+      </p>
+      <img class="screenshot" src="https://raw.githubusercontent.com/runrmc/airline-delay-analytics/main/reports/dashboard_screenshot.png" alt="Airline delay analytics Tableau dashboard screenshot" />
+      <a class="cta-button" href="https://public.tableau.com/views/AirlineDelayAnalysis_17895006284050/2025FlightDelayReliabilityAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank">View the live dashboard on Tableau Public ↗</a>
+    </section>
+
+    <!-- 5. Repository -->
+    <section class="project-section page-end" id="repository">
+      <h2>Repository</h2>
+      <div class="deliverables">
+        <a class="deliverable-item" href="https://github.com/runrmc/airline-delay-analytics" target="_blank">
+          <div class="deliverable-info">
+            <h4>airline-delay-analytics</h4>
+            <p>SQL queries, data pipeline notebooks, and warehouse schema — public GitHub repository</p>
+          </div>
+          <span class="deliverable-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
