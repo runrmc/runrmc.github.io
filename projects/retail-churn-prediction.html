@@ -86,6 +86,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -239,6 +259,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#labeling">The Churn Labeling Problem</a></li>
           <li><a href="#modeling">Modeling &amp; Results</a></li>
@@ -247,6 +268,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can take a business problem with no clean label and build a full deployable pipeline around it. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Engineering a label from scratch</strong> — Built a churn definition from raw purchase data (no pre-existing flag), testing multiple time windows against actual customer behavior instead of picking an arbitrary cutoff.</li>
+        <li><strong>Production-style ML workflow</strong> — Ran a logistic regression baseline through to tuned XGBoost (5-fold grid search), then refactored notebook logic into reusable, type-hinted modules — not a one-off notebook.</li>
+        <li><strong>Business-aligned model evaluation</strong> — Went beyond standard ML metrics (ROC-AUC, recall) to a "revenue at risk" metric, then found and fixed a real gap: the model missed high-value churners disproportionately, and reweighting the objective improved revenue capture by 7.7 points.</li>
+        <li><strong>End-to-end deployment</strong> — Shipped the model behind a live, interactive Streamlit dashboard where anyone can look up a customer and see a real-time prediction.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can turn an ambiguous business problem into a working, deployed tool — and know when a model's accuracy numbers are hiding a business-relevant blind spot.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
