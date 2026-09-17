@@ -77,6 +77,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     .stat-row {
       display: flex;
       gap: 32px;
@@ -189,6 +209,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#framing">The Precision-Recall Tradeoff</a></li>
           <li><a href="#methods">Methods & Evaluation</a></li>
@@ -197,6 +218,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I know how to evaluate a classifier by what actually matters, not just accuracy. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Asymmetric error-cost reasoning</strong> — Recognized that false positives and false negatives aren't equally bad here, and optimized GridSearchCV for precision specifically instead of defaulting to accuracy.</li>
+        <li><strong>Threshold selection as a modeling decision</strong> — Manually shifted a decision threshold to show exactly how it trades recall for precision, rather than treating the default 0.5 cutoff as fixed.</li>
+        <li><strong>Rigorous model comparison</strong> — Benchmarked against dummy baselines (to know what "better than nothing" actually means), then compared SVC and Logistic Regression using confusion matrices, precision-recall curves, and ROC curves — not a single accuracy number.</li>
+        <li><strong>Correct preprocessing discipline</strong> — Fit <code>StandardScaler</code> on training data only, then quantified the real cost of skipping normalization, showing why the practice matters rather than just following it by rote.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I know how to pick the right metric for the problem, not just run the highest-accuracy model — a distinction that matters anywhere a false positive and a false negative don't cost the same.</p>
+    </section>
 
     <!-- 1. Overview -->
     <section class="project-section" id="overview">
