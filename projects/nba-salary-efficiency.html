@@ -135,15 +135,24 @@
 
     .page-end { padding-bottom: 100px; }
 
-    .takeaway-line {
-      padding: 16px 20px;
-      border-left: 2px solid #222;
-      background: #fafafa;
-      color: #222;
-      font-size: 0.95rem;
-      margin-top: 14px;
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
     }
-    .takeaway-line strong { color: #222; }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
 
   </style>
 </head>
@@ -185,27 +194,13 @@
       <p>
         This project shows I can turn a messy real-world question into a rigorous, end-to-end analysis. Skills that matter for recruiters:
       </p>
-      <ul class="insight-list">
-        <li>
-          <strong>Data pipelines</strong>
-          Built two custom pipelines (NBA API + BeautifulSoup scraping) to source and merge 2,973 player-seasons across 10 seasons.
-        </li>
-        <li>
-          <strong>Statistical modeling</strong>
-          Used OLS regression and hypothesis testing to validate findings, not just eyeball charts.
-        </li>
-        <li>
-          <strong>Business framing</strong>
-          Translated model output into decision-relevant insights (who's over/underpaid and why), not just coefficients.
-        </li>
-        <li>
-          <strong>Python at scale</strong>
-          pandas, matplotlib, and reproducible analysis on a multi-thousand-row dataset — the same toolkit used daily in BI/analytics and data science roles.
-        </li>
+      <ul class="skill-bullets">
+        <li><strong>Data pipelines</strong> — Built two custom pipelines (NBA API + BeautifulSoup scraping) to source and merge 2,973 player-seasons across 10 seasons.</li>
+        <li><strong>Statistical modeling</strong> — Used OLS regression and hypothesis testing to validate findings, not just eyeball charts.</li>
+        <li><strong>Business framing</strong> — Translated model output into decision-relevant insights (who's over/underpaid and why), not just coefficients.</li>
+        <li><strong>Python at scale</strong> — pandas, matplotlib, and reproducible analysis on a multi-thousand-row dataset — the same toolkit used daily in BI/analytics and data science roles.</li>
       </ul>
-      <div class="takeaway-line">
-        <strong>Takeaway:</strong> I can take raw, scattered data to a defensible, well-communicated conclusion on my own.
-      </div>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can take raw, scattered data to a defensible, well-communicated conclusion on my own.</p>
     </section>
 
     <!-- 1. Overview -->
