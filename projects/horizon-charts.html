@@ -81,6 +81,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -204,6 +224,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#what">What is a Horizon Chart?</a></li>
           <li><a href="#implementation">Implementation</a></li>
@@ -211,6 +232,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can build a custom visualization tool from a chart-construction spec, not just use what a library gives me out of the box. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Building tools a library doesn't provide</strong> — Implemented a chart type Altair doesn't natively support, working at the layering/clipping level rather than calling a pre-built function.</li>
+        <li><strong>Modular, testable code design</strong> — Split the renderer into five single-purpose helper functions (validation, band-height calculation, color checks) instead of one monolithic function, with input validation and custom exceptions throughout.</li>
+        <li><strong>Handling edge cases in real data</strong> — Solved for asymmetric positive/negative series and fixed a visual artifact in Altair's default interpolation that misrepresented the data near zero.</li>
+        <li><strong>Generalized, reusable design</strong> — Built the function to work on any time series input (validated against synthetic and real-world weather data), not just the one dataset in front of it.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can build production-quality, reusable tooling from scratch when the off-the-shelf option doesn't exist — a skill that matters whenever a team's needs outgrow standard library functions.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
