@@ -81,6 +81,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -236,6 +256,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#apt">The APT Algorithm</a></li>
           <li><a href="#data">The Data</a></li>
@@ -244,6 +265,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can turn a published algorithm into a working system, not just use pre-built tools. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Algorithm implementation from a research paper</strong> — Translated Mackinlay's 1986 APT algorithm from academic description into working Python/Altair code, including edge-case handling — the same skill as implementing any published method from a paper rather than just calling a library.</li>
+        <li><strong>Systems thinking under real constraints</strong> — Resolved channel conflicts (e.g., color density/saturation/hue all mapping to one Altair property) and built custom exception handling instead of letting the system fail silently.</li>
+        <li><strong>Applied visualization theory</strong> — Used the algorithm's own encoding logic to build real charts (dumbbell plots, compound panel views) on a live dataset, connecting theory directly to practice.</li>
+        <li><strong>Working with combined, messy datasets</strong> — Merged three separate data sources (Bechdel results, cast demographics, box office figures) into one analysis-ready structure.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can go from a research paper to a working system, not just apply pre-built tools — a skill that transfers directly to building custom analytics or visualization tooling on the job.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
