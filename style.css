@@ -240,13 +240,20 @@ h2 {
 .resume-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 4px;
+}
+
+.resume-header h3 {
+  flex: 1;
 }
 
 .resume-date {
   font-size: 0.9rem;
   color: #777;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .resume-subtitle {
@@ -262,6 +269,10 @@ h2 {
 .resume-list li {
   margin-bottom: 8px;
   color: #444;
+}
+
+#dsprojects > p {
+  margin-bottom: 24px;
 }
 
 /* Responsive */
