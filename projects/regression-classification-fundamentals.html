@@ -77,6 +77,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     .stat-row {
       display: flex;
       gap: 32px;
@@ -168,6 +188,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#regression">Regression: Polynomial Models & Regularization</a></li>
           <li><a href="#classification">Classification: KNN & SVC</a></li>
@@ -175,6 +196,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I understand the mechanics behind ML models, not just how to call <code>.fit()</code>. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Diagnosing overfitting and underfitting</strong> — Tested polynomial degrees 1 through 11 against both a noisy test set and a "gold standard" noiseless function, and quantified exactly where models started memorizing noise instead of learning signal.</li>
+        <li><strong>Regularization in practice</strong> — Applied Lasso to show that penalizing complexity doesn't just prevent overfitting on paper — it measurably improved recovery of the true underlying function.</li>
+        <li><strong>Hyperparameter tuning done rigorously</strong> — Swept KNN's k and SVC's gamma using cross-validation, and ran a deliberate "optimize on the wrong metric" exercise to quantify the real cost of tuning against training accuracy instead of test accuracy.</li>
+        <li><strong>Stakes-aware model evaluation</strong> — On a real medical dataset (malignant vs. benign), reasoned about why false negatives matter more than false positives and evaluated accordingly, rather than defaulting to accuracy alone.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I understand what's actually happening inside a model, which means I can debug it, tune it, and explain why it works — not just run it.</p>
+    </section>
 
     <!-- 1. Overview -->
     <section class="project-section" id="overview">
