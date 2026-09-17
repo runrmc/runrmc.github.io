@@ -77,6 +77,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     .stat-row {
       display: flex;
       gap: 32px;
@@ -182,6 +202,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#leakage">Identifying and Solving Data Leakage</a></li>
           <li><a href="#methods">Modeling & Feature Selection</a></li>
@@ -190,6 +211,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can catch a data problem that would fool a standard workflow, not just build a model that looks good on paper. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Diagnosing data leakage</strong> — Identified that a standard row-level train/test split let the model memorize individual subjects rather than learn the actual task, inflating accuracy by 22 points — then built a custom subject-aware split function to fix it.</li>
+        <li><strong>Feature selection under a hard constraint</strong> — With 533 features and a 10-feature limit (exhaustive search being computationally infeasible), used a two-stage Gradient Boosting approach to find near-optimal features efficiently.</li>
+        <li><strong>Honest baselining</strong> — Reported the corrected, lower baseline (~58.6%) instead of the flattering but wrong leaked number (~80.7%), and measured the final model's real improvement against it.</li>
+        <li><strong>Multi-class model evaluation</strong> — Used macro-averaged, one-vs-rest ROC-AUC and confusion matrix analysis to understand not just overall performance but which classes the model actually struggles to tell apart.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I know how to spot a model that's cheating before it ships — a data leakage bug like this one is exactly the kind of mistake that looks fine in a demo and fails in production.</p>
+    </section>
 
     <!-- 1. Overview -->
     <section class="project-section" id="overview">
