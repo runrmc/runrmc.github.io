@@ -113,6 +113,25 @@
       margin-bottom: 4px;
     }
 
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     .concept-block { margin: 36px 0; }
     .concept-block h3 {
       font-size: 1.05rem;
@@ -272,6 +291,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#scenario">Algorithm, Scenario & Ethics Risks</a></li>
           <li><a href="#recommendation">Recommendation</a></li>
@@ -280,6 +300,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can evaluate an AI system's real-world impact, not just its technical performance. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Responsible AI thinking</strong> — Applied established ethics frameworks (data provenance, power analysis) to identify concrete risks in an automated hiring system, not just flag "bias" in the abstract.</li>
+        <li><strong>Stakeholder communication</strong> — Delivered findings as a video presentation built for two audiences at once — company stakeholders and technical evaluators — translating the same analysis into language each group needed.</li>
+        <li><strong>Practical recommendations</strong> — Moved beyond critique to specific, actionable fixes (consent, data transparency, contestability) that a company could actually implement.</li>
+        <li><strong>Critical data literacy</strong> — Traced how training data reflects human decisions and historical bias, a lens increasingly required for anyone building or deploying ML systems at scale.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can spot the ethical and business risk in a data system before it becomes a headline — and communicate that risk clearly to both technical and non-technical audiences.</p>
+    </section>
 
     <!-- 1. Overview -->
     <section class="project-section" id="overview">
