@@ -86,6 +86,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -230,6 +250,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#architecture">Data &amp; Architecture</a></li>
           <li><a href="#findings">Key Findings</a></li>
@@ -238,6 +259,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can build a full analytics pipeline from messy raw data to a decision-ready dashboard. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Data warehousing / SQL at scale</strong> — Designed a star schema (fact + dimension tables) and loaded ~7M flight records into PostgreSQL via bulk <code>COPY</code>, the same modeling pattern used in production analytics warehouses.</li>
+        <li><strong>Advanced SQL</strong> — Used window functions (<code>LAG()</code>, <code>RANK()</code>), CTEs, conditional aggregation, and a role-playing dimension join — techniques that separate analyst-level SQL from basic querying.</li>
+        <li><strong>Data cleaning at scale</strong> — Cut a 110-column raw source down to 39 relevant fields and handled nulls with business logic instead of blanket imputation, on a dataset too large for spreadsheet tools.</li>
+        <li><strong>BI storytelling</strong> — Turned seven analytical queries into an interactive Tableau dashboard and surfaced non-obvious findings (e.g., Sunday/Monday are the least reliable days, not Friday) that a stakeholder could act on.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can build a full analytics pipeline — from messy raw data to a warehouse to a dashboard — the same path this data would take inside any travel or operations team.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
