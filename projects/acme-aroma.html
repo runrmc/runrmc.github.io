@@ -81,6 +81,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -280,6 +300,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#executive-summary">Executive Summary</a></li>
           <li><a href="#findings">Key Findings & Technical Report</a></li>
@@ -288,6 +309,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can take a data problem all the way from raw records to a boardroom-ready recommendation. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Predictive modeling with business impact</strong> — Built a logistic regression model (91% recall) to flag at-risk employees, then translated it into a specific HR initiative projected to save ₹318M annually.</li>
+        <li><strong>Handling messy real-world data</strong> — Addressed class imbalance (only 16% of records were departures) through oversampling and picked recall as the priority metric because missing a true departure costs more than a false alarm.</li>
+        <li><strong>Executive communication</strong> — Delivered the same analysis three ways (one-page summary, technical slidedoc, recorded presentation) using the PAIRL framework, each tailored to a different level of audience.</li>
+        <li><strong>Odds-ratio interpretation</strong> — Converted statistical output into plain-language business levers (e.g., "limiting travel cuts departure probability by 14 points") that a non-technical VP could act on immediately.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can take a data problem all the way from raw HR records to a boardroom-ready recommendation with a dollar figure attached.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
