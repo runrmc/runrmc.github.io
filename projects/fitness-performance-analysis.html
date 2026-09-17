@@ -81,6 +81,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -212,6 +232,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#data">The Data</a></li>
           <li><a href="#visualizations">The Visualizations</a></li>
@@ -219,6 +240,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can take an unfamiliar, messy real-world dataset and build a narrative that explains what's actually happening. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Narrative-driven analysis</strong> — Structured four visualizations so each one answers the question the last one raised, rather than presenting disconnected charts — a real analytical arc, not a slideshow of plots.</li>
+        <li><strong>Messy real-world data handling</strong> — Resolved duplicate/conflicting sensor columns using correlation analysis to pick the more reliable field, and engineered derived metrics (pace, elevation gain, session type) from raw GPS output.</li>
+        <li><strong>Geospatial visualization</strong> — Built an interactive Folium map layering GPS routes with performance metrics, hover tooltips, and color encoding — a more advanced visualization skill than standard charting.</li>
+        <li><strong>Client-facing data work with confidentiality awareness</strong> — Delivered findings from real personal client data while handling the constraint of not being able to publish it, reproducing the same analysis on synthetic data for the public-facing version.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can take an unfamiliar, messy real-world dataset and build a narrative that actually explains what's happening, not just chart what's there.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
