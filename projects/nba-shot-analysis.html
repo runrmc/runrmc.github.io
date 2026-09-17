@@ -81,6 +81,26 @@
     }
     .project-section ul li { margin-bottom: 10px; }
 
+    /* ── Skill bullets (What This Means For You) ── */
+    .skill-bullets {
+      padding-left: 20px;
+      margin: 0 0 16px;
+      color: #444;
+    }
+    .skill-bullets li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .skill-bullets li strong { color: #222; }
+
+    .takeaway-note {
+      color: #444;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .takeaway-note strong { color: #222; font-style: normal; }
+
     /* ── Stat blocks ── */
     .stat-row {
       display: flex;
@@ -235,6 +255,7 @@
       <div class="toc-inner">
         <p>On this page</p>
         <ol>
+          <li><a href="#takeaway">What This Means For You</a></li>
           <li><a href="#overview">Project Overview</a></li>
           <li><a href="#data">The Data</a></li>
           <li><a href="#dashboard">The Dashboard</a></li>
@@ -243,6 +264,21 @@
         </ol>
       </div>
     </div>
+
+    <!-- 0. What This Means For You -->
+    <section class="project-section" id="takeaway">
+      <h2>What This Means For You</h2>
+      <p>
+        This project shows I can turn raw, granular data into an interactive tool someone can actually explore. Skills that matter for recruiters:
+      </p>
+      <ul class="skill-bullets">
+        <li><strong>Interactive dashboard design</strong> — Built four linked Plotly visualizations (scatter, histogram, line, stacked bar) where filtering one updates all views — the same pattern used in production BI tools, not just static charts.</li>
+        <li><strong>Chart-type judgment</strong> — Chose each visualization deliberately based on what the data needed to show (spatial → scatter, trend → line, composition → stacked bar), rather than defaulting to whatever's easiest to make.</li>
+        <li><strong>Large-scale data cleaning</strong> — Processed 828K+ shot records, removing outliers and engineering a derived points-scored field to enable efficiency metrics on the fly.</li>
+        <li><strong>Insight generation from visuals</strong> — Used the dashboard to surface a real trend (the collapse of mid-range shooting) rather than just displaying data for its own sake.</li>
+      </ul>
+      <p class="takeaway-note"><strong>Takeaway:</strong> I can turn raw, granular data into an interactive tool that lets someone explore a question themselves, not just read a static report.</p>
+    </section>
 
     <!-- 1. Project Overview -->
     <section class="project-section" id="overview">
